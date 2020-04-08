@@ -1,0 +1,3147 @@
+<?xml version="1.0" encoding="ascii"?>
+<hkpackfile classversion="11" contentsversion="hk_2014.1.0-r1" toplevelobject="#0001" maxpredicate="21" predicates="">
+
+	<hksection name="__types__">
+
+		<hkobject name="#0004" class="hkClass" signature="0x33d42383">
+			<hkparam name="name">hkBaseObject</hkparam>
+			<hkparam name="parent">null</hkparam>
+			<hkparam name="objectSize">8</hkparam>
+			<hkparam name="numImplementedInterfaces">1</hkparam>
+			<hkparam name="declaredEnums" numelements="0"></hkparam>
+			<hkparam name="declaredMembers" numelements="0"></hkparam>
+			<!-- defaults SERIALIZE_IGNORED -->
+			<!-- attributes SERIALIZE_IGNORED -->
+			<hkparam name="flags">0</hkparam>
+			<hkparam name="describedVersion">0</hkparam>
+		</hkobject>
+
+		<hkobject name="#0003" class="hkClass" signature="0x33d42383">
+			<hkparam name="name">hkReferencedObject</hkparam>
+			<hkparam name="parent">#0004</hkparam>
+			<hkparam name="objectSize">16</hkparam>
+			<hkparam name="numImplementedInterfaces">0</hkparam>
+			<hkparam name="declaredEnums" numelements="0"></hkparam>
+			<hkparam name="declaredMembers" numelements="1">
+				<hkobject>
+					<hkparam name="name">memSizeAndRefCount</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_UINT32</hkparam>
+					<hkparam name="subtype">TYPE_VOID</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">SERIALIZE_IGNORED</hkparam>
+					<hkparam name="offset">8</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+			</hkparam>
+			<!-- defaults SERIALIZE_IGNORED -->
+			<!-- attributes SERIALIZE_IGNORED -->
+			<hkparam name="flags">0</hkparam>
+			<hkparam name="describedVersion">0</hkparam>
+		</hkobject>
+
+		<hkobject name="#0002" class="hkClass" signature="0x33d42383">
+			<hkparam name="name">hkRootLevelContainerNamedVariant</hkparam>
+			<hkparam name="parent">null</hkparam>
+			<hkparam name="objectSize">24</hkparam>
+			<hkparam name="numImplementedInterfaces">0</hkparam>
+			<hkparam name="declaredEnums" numelements="0"></hkparam>
+			<hkparam name="declaredMembers" numelements="3">
+				<hkobject>
+					<hkparam name="name">name</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_STRINGPTR</hkparam>
+					<hkparam name="subtype">TYPE_VOID</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">0</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">className</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_STRINGPTR</hkparam>
+					<hkparam name="subtype">TYPE_VOID</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">8</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">variant</hkparam>
+					<hkparam name="class">#0003</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_POINTER</hkparam>
+					<hkparam name="subtype">TYPE_STRUCT</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">16</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+			</hkparam>
+			<!-- defaults SERIALIZE_IGNORED -->
+			<!-- attributes SERIALIZE_IGNORED -->
+			<hkparam name="flags">0</hkparam>
+			<hkparam name="describedVersion">1</hkparam>
+		</hkobject>
+
+		<hkobject name="#0005" class="hkClass" signature="0x33d42383">
+			<hkparam name="name">hkRootLevelContainer</hkparam>
+			<hkparam name="parent">null</hkparam>
+			<hkparam name="objectSize">16</hkparam>
+			<hkparam name="numImplementedInterfaces">0</hkparam>
+			<hkparam name="declaredEnums" numelements="0"></hkparam>
+			<hkparam name="declaredMembers" numelements="1">
+				<hkobject>
+					<hkparam name="name">namedVariants</hkparam>
+					<hkparam name="class">#0002</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_ARRAY</hkparam>
+					<hkparam name="subtype">TYPE_STRUCT</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">0</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+			</hkparam>
+			<!-- defaults SERIALIZE_IGNORED -->
+			<!-- attributes SERIALIZE_IGNORED -->
+			<hkparam name="flags">0</hkparam>
+			<hkparam name="describedVersion">0</hkparam>
+		</hkobject>
+
+		<hkobject name="#0006" class="hkClass" signature="0x33d42383">
+			<hkparam name="name">hkaMeshBindingMapping</hkparam>
+			<hkparam name="parent">null</hkparam>
+			<hkparam name="objectSize">16</hkparam>
+			<hkparam name="numImplementedInterfaces">0</hkparam>
+			<hkparam name="declaredEnums" numelements="0"></hkparam>
+			<hkparam name="declaredMembers" numelements="1">
+				<hkobject>
+					<hkparam name="name">mapping</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_ARRAY</hkparam>
+					<hkparam name="subtype">TYPE_INT16</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">0</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+			</hkparam>
+			<!-- defaults SERIALIZE_IGNORED -->
+			<!-- attributes SERIALIZE_IGNORED -->
+			<hkparam name="flags">0</hkparam>
+			<hkparam name="describedVersion">0</hkparam>
+		</hkobject>
+
+		<hkobject name="#0010" class="hkClass" signature="0x33d42383">
+			<hkparam name="name">hkxAttribute</hkparam>
+			<hkparam name="parent">null</hkparam>
+			<hkparam name="objectSize">16</hkparam>
+			<hkparam name="numImplementedInterfaces">0</hkparam>
+			<hkparam name="declaredEnums" numelements="1">
+				<hkobject>
+					<hkparam name="name">Hint</hkparam>
+					<hkparam name="items" numelements="6">
+						<hkobject>
+							<hkparam name="value">0</hkparam>
+							<hkparam name="name">HINT_NONE</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">1</hkparam>
+							<hkparam name="name">HINT_IGNORE</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">2</hkparam>
+							<hkparam name="name">HINT_TRANSFORM</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">4</hkparam>
+							<hkparam name="name">HINT_SCALE</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">6</hkparam>
+							<hkparam name="name">HINT_TRANSFORM_AND_SCALE</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">8</hkparam>
+							<hkparam name="name">HINT_FLIP</hkparam>
+						</hkobject>
+					</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+					<hkparam name="flags">0</hkparam>
+				</hkobject>
+			</hkparam>
+			<hkparam name="declaredMembers" numelements="2">
+				<hkobject>
+					<hkparam name="name">name</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_STRINGPTR</hkparam>
+					<hkparam name="subtype">TYPE_VOID</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">0</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">value</hkparam>
+					<hkparam name="class">#0003</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_POINTER</hkparam>
+					<hkparam name="subtype">TYPE_STRUCT</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">8</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+			</hkparam>
+			<!-- defaults SERIALIZE_IGNORED -->
+			<!-- attributes SERIALIZE_IGNORED -->
+			<hkparam name="flags">0</hkparam>
+			<hkparam name="describedVersion">1</hkparam>
+		</hkobject>
+
+		<hkobject name="#0009" class="hkClass" signature="0x33d42383">
+			<hkparam name="name">hkxAttributeGroup</hkparam>
+			<hkparam name="parent">null</hkparam>
+			<hkparam name="objectSize">24</hkparam>
+			<hkparam name="numImplementedInterfaces">0</hkparam>
+			<hkparam name="declaredEnums" numelements="0"></hkparam>
+			<hkparam name="declaredMembers" numelements="2">
+				<hkobject>
+					<hkparam name="name">name</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_STRINGPTR</hkparam>
+					<hkparam name="subtype">TYPE_VOID</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">0</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">attributes</hkparam>
+					<hkparam name="class">#0010</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_ARRAY</hkparam>
+					<hkparam name="subtype">TYPE_STRUCT</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">8</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+			</hkparam>
+			<!-- defaults SERIALIZE_IGNORED -->
+			<!-- attributes SERIALIZE_IGNORED -->
+			<hkparam name="flags">0</hkparam>
+			<hkparam name="describedVersion">0</hkparam>
+		</hkobject>
+
+		<hkobject name="#0008" class="hkClass" signature="0x33d42383">
+			<hkparam name="name">hkxAttributeHolder</hkparam>
+			<hkparam name="parent">#0003</hkparam>
+			<hkparam name="objectSize">32</hkparam>
+			<hkparam name="numImplementedInterfaces">0</hkparam>
+			<hkparam name="declaredEnums" numelements="0"></hkparam>
+			<hkparam name="declaredMembers" numelements="1">
+				<hkobject>
+					<hkparam name="name">attributeGroups</hkparam>
+					<hkparam name="class">#0009</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_ARRAY</hkparam>
+					<hkparam name="subtype">TYPE_STRUCT</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">16</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+			</hkparam>
+			<!-- defaults SERIALIZE_IGNORED -->
+			<!-- attributes SERIALIZE_IGNORED -->
+			<hkparam name="flags">0</hkparam>
+			<hkparam name="describedVersion">2</hkparam>
+		</hkobject>
+
+		<hkobject name="#0007" class="hkClass" signature="0x33d42383">
+			<hkparam name="name">hkxMeshUserChannelInfo</hkparam>
+			<hkparam name="parent">#0008</hkparam>
+			<hkparam name="objectSize">48</hkparam>
+			<hkparam name="numImplementedInterfaces">0</hkparam>
+			<hkparam name="declaredEnums" numelements="0"></hkparam>
+			<hkparam name="declaredMembers" numelements="2">
+				<hkobject>
+					<hkparam name="name">name</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_STRINGPTR</hkparam>
+					<hkparam name="subtype">TYPE_VOID</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">32</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">className</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_STRINGPTR</hkparam>
+					<hkparam name="subtype">TYPE_VOID</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">40</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+			</hkparam>
+			<!-- defaults SERIALIZE_IGNORED -->
+			<!-- attributes SERIALIZE_IGNORED -->
+			<hkparam name="flags">0</hkparam>
+			<hkparam name="describedVersion">0</hkparam>
+		</hkobject>
+
+		<hkobject name="#0011" class="hkClass" signature="0x33d42383">
+			<hkparam name="name">hkMeshBoneIndexMapping</hkparam>
+			<hkparam name="parent">null</hkparam>
+			<hkparam name="objectSize">16</hkparam>
+			<hkparam name="numImplementedInterfaces">0</hkparam>
+			<hkparam name="declaredEnums" numelements="0"></hkparam>
+			<hkparam name="declaredMembers" numelements="1">
+				<hkobject>
+					<hkparam name="name">mapping</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_ARRAY</hkparam>
+					<hkparam name="subtype">TYPE_INT16</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">0</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+			</hkparam>
+			<!-- defaults SERIALIZE_IGNORED -->
+			<!-- attributes SERIALIZE_IGNORED -->
+			<hkparam name="flags">0</hkparam>
+			<hkparam name="describedVersion">0</hkparam>
+		</hkobject>
+
+		<hkobject name="#0013" class="hkClassEnum" signature="0x8a3609cf">
+			<hkparam name="name">DataUsage</hkparam>
+			<hkparam name="items" numelements="10">
+				<hkobject>
+					<hkparam name="value">0</hkparam>
+					<hkparam name="name">HKX_DU_NONE</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="value">1</hkparam>
+					<hkparam name="name">HKX_DU_POSITION</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="value">2</hkparam>
+					<hkparam name="name">HKX_DU_COLOR</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="value">4</hkparam>
+					<hkparam name="name">HKX_DU_NORMAL</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="value">8</hkparam>
+					<hkparam name="name">HKX_DU_TANGENT</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="value">16</hkparam>
+					<hkparam name="name">HKX_DU_BINORMAL</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="value">32</hkparam>
+					<hkparam name="name">HKX_DU_TEXCOORD</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="value">64</hkparam>
+					<hkparam name="name">HKX_DU_BLENDWEIGHTS</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="value">128</hkparam>
+					<hkparam name="name">HKX_DU_BLENDINDICES</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="value">256</hkparam>
+					<hkparam name="name">HKX_DU_USERDATA</hkparam>
+				</hkobject>
+			</hkparam>
+			<!-- attributes SERIALIZE_IGNORED -->
+			<hkparam name="flags">0</hkparam>
+		</hkobject>
+
+		<hkobject name="#0012" class="hkClass" signature="0x33d42383">
+			<hkparam name="name">hkxVertexAnimationUsageMap</hkparam>
+			<hkparam name="parent">null</hkparam>
+			<hkparam name="objectSize">4</hkparam>
+			<hkparam name="numImplementedInterfaces">0</hkparam>
+			<hkparam name="declaredEnums" numelements="0"></hkparam>
+			<hkparam name="declaredMembers" numelements="3">
+				<hkobject>
+					<hkparam name="name">use</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">#0013</hkparam>
+					<hkparam name="type">TYPE_ENUM</hkparam>
+					<hkparam name="subtype">TYPE_UINT16</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">0</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">useIndexOrig</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_UINT8</hkparam>
+					<hkparam name="subtype">TYPE_VOID</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">2</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">useIndexLocal</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_UINT8</hkparam>
+					<hkparam name="subtype">TYPE_VOID</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">3</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+			</hkparam>
+			<!-- defaults SERIALIZE_IGNORED -->
+			<!-- attributes SERIALIZE_IGNORED -->
+			<hkparam name="flags">0</hkparam>
+			<hkparam name="describedVersion">0</hkparam>
+		</hkobject>
+
+		<hkobject name="#0018" class="hkClassEnum" signature="0x8a3609cf">
+			<hkparam name="name">DataType</hkparam>
+			<hkparam name="items" numelements="5">
+				<hkobject>
+					<hkparam name="value">0</hkparam>
+					<hkparam name="name">HKX_DT_NONE</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="value">1</hkparam>
+					<hkparam name="name">HKX_DT_UINT8</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="value">2</hkparam>
+					<hkparam name="name">HKX_DT_INT16</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="value">3</hkparam>
+					<hkparam name="name">HKX_DT_UINT32</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="value">4</hkparam>
+					<hkparam name="name">HKX_DT_FLOAT</hkparam>
+				</hkobject>
+			</hkparam>
+			<!-- attributes SERIALIZE_IGNORED -->
+			<hkparam name="flags">0</hkparam>
+		</hkobject>
+
+		<hkobject name="#0017" class="hkClass" signature="0x33d42383">
+			<hkparam name="name">hkxVertexDescriptionElementDecl</hkparam>
+			<hkparam name="parent">null</hkparam>
+			<hkparam name="objectSize">24</hkparam>
+			<hkparam name="numImplementedInterfaces">0</hkparam>
+			<hkparam name="declaredEnums" numelements="0"></hkparam>
+			<hkparam name="declaredMembers" numelements="6">
+				<hkobject>
+					<hkparam name="name">byteOffset</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_UINT32</hkparam>
+					<hkparam name="subtype">TYPE_VOID</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">0</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">type</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">#0018</hkparam>
+					<hkparam name="type">TYPE_ENUM</hkparam>
+					<hkparam name="subtype">TYPE_UINT16</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">4</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">usage</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">#0013</hkparam>
+					<hkparam name="type">TYPE_ENUM</hkparam>
+					<hkparam name="subtype">TYPE_UINT16</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">6</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">byteStride</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_UINT32</hkparam>
+					<hkparam name="subtype">TYPE_VOID</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">8</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">numElements</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_UINT8</hkparam>
+					<hkparam name="subtype">TYPE_VOID</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">12</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">channelID</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_STRINGPTR</hkparam>
+					<hkparam name="subtype">TYPE_VOID</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">16</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+			</hkparam>
+			<!-- defaults SERIALIZE_IGNORED -->
+			<!-- attributes SERIALIZE_IGNORED -->
+			<hkparam name="flags">0</hkparam>
+			<hkparam name="describedVersion">4</hkparam>
+		</hkobject>
+
+		<hkobject name="#0016" class="hkClass" signature="0x33d42383">
+			<hkparam name="name">hkxVertexDescription</hkparam>
+			<hkparam name="parent">null</hkparam>
+			<hkparam name="objectSize">16</hkparam>
+			<hkparam name="numImplementedInterfaces">0</hkparam>
+			<hkparam name="declaredEnums" numelements="2">
+				<hkobject>
+					<hkparam name="name">DataType</hkparam>
+					<hkparam name="items" numelements="5">
+						<hkobject>
+							<hkparam name="value">0</hkparam>
+							<hkparam name="name">HKX_DT_NONE</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">1</hkparam>
+							<hkparam name="name">HKX_DT_UINT8</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">2</hkparam>
+							<hkparam name="name">HKX_DT_INT16</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">3</hkparam>
+							<hkparam name="name">HKX_DT_UINT32</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">4</hkparam>
+							<hkparam name="name">HKX_DT_FLOAT</hkparam>
+						</hkobject>
+					</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+					<hkparam name="flags">0</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">DataUsage</hkparam>
+					<hkparam name="items" numelements="10">
+						<hkobject>
+							<hkparam name="value">0</hkparam>
+							<hkparam name="name">HKX_DU_NONE</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">1</hkparam>
+							<hkparam name="name">HKX_DU_POSITION</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">2</hkparam>
+							<hkparam name="name">HKX_DU_COLOR</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">4</hkparam>
+							<hkparam name="name">HKX_DU_NORMAL</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">8</hkparam>
+							<hkparam name="name">HKX_DU_TANGENT</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">16</hkparam>
+							<hkparam name="name">HKX_DU_BINORMAL</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">32</hkparam>
+							<hkparam name="name">HKX_DU_TEXCOORD</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">64</hkparam>
+							<hkparam name="name">HKX_DU_BLENDWEIGHTS</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">128</hkparam>
+							<hkparam name="name">HKX_DU_BLENDINDICES</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">256</hkparam>
+							<hkparam name="name">HKX_DU_USERDATA</hkparam>
+						</hkobject>
+					</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+					<hkparam name="flags">0</hkparam>
+				</hkobject>
+			</hkparam>
+			<hkparam name="declaredMembers" numelements="1">
+				<hkobject>
+					<hkparam name="name">decls</hkparam>
+					<hkparam name="class">#0017</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_ARRAY</hkparam>
+					<hkparam name="subtype">TYPE_STRUCT</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">0</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+			</hkparam>
+			<!-- defaults SERIALIZE_IGNORED -->
+			<!-- attributes SERIALIZE_IGNORED -->
+			<hkparam name="flags">0</hkparam>
+			<hkparam name="describedVersion">1</hkparam>
+		</hkobject>
+
+		<hkobject name="#0019" class="hkClass" signature="0x33d42383">
+			<hkparam name="name">hkxVertexBufferVertexData</hkparam>
+			<hkparam name="parent">null</hkparam>
+			<hkparam name="objectSize">104</hkparam>
+			<hkparam name="numImplementedInterfaces">0</hkparam>
+			<hkparam name="declaredEnums" numelements="0"></hkparam>
+			<hkparam name="declaredMembers" numelements="11">
+				<hkobject>
+					<hkparam name="name">vectorData</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_ARRAY</hkparam>
+					<hkparam name="subtype">TYPE_UINT32</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">0</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">floatData</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_ARRAY</hkparam>
+					<hkparam name="subtype">TYPE_UINT32</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">16</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">uint32Data</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_ARRAY</hkparam>
+					<hkparam name="subtype">TYPE_UINT32</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">32</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">uint16Data</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_ARRAY</hkparam>
+					<hkparam name="subtype">TYPE_UINT16</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">48</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">uint8Data</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_ARRAY</hkparam>
+					<hkparam name="subtype">TYPE_UINT8</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">64</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">numVerts</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_UINT32</hkparam>
+					<hkparam name="subtype">TYPE_VOID</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">80</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">vectorStride</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_UINT32</hkparam>
+					<hkparam name="subtype">TYPE_VOID</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">84</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">floatStride</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_UINT32</hkparam>
+					<hkparam name="subtype">TYPE_VOID</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">88</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">uint32Stride</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_UINT32</hkparam>
+					<hkparam name="subtype">TYPE_VOID</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">92</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">uint16Stride</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_UINT32</hkparam>
+					<hkparam name="subtype">TYPE_VOID</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">96</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">uint8Stride</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_UINT32</hkparam>
+					<hkparam name="subtype">TYPE_VOID</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">100</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+			</hkparam>
+			<!-- defaults SERIALIZE_IGNORED -->
+			<!-- attributes SERIALIZE_IGNORED -->
+			<hkparam name="flags">0</hkparam>
+			<hkparam name="describedVersion">2</hkparam>
+		</hkobject>
+
+		<hkobject name="#0015" class="hkClass" signature="0x33d42383">
+			<hkparam name="name">hkxVertexBuffer</hkparam>
+			<hkparam name="parent">#0003</hkparam>
+			<hkparam name="objectSize">136</hkparam>
+			<hkparam name="numImplementedInterfaces">0</hkparam>
+			<hkparam name="declaredEnums" numelements="0"></hkparam>
+			<hkparam name="declaredMembers" numelements="2">
+				<hkobject>
+					<hkparam name="name">data</hkparam>
+					<hkparam name="class">#0019</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_STRUCT</hkparam>
+					<hkparam name="subtype">TYPE_VOID</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">16</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">desc</hkparam>
+					<hkparam name="class">#0016</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_STRUCT</hkparam>
+					<hkparam name="subtype">TYPE_VOID</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">120</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+			</hkparam>
+			<!-- defaults SERIALIZE_IGNORED -->
+			<!-- attributes SERIALIZE_IGNORED -->
+			<hkparam name="flags">0</hkparam>
+			<hkparam name="describedVersion">1</hkparam>
+		</hkobject>
+
+		<hkobject name="#0014" class="hkClass" signature="0x33d42383">
+			<hkparam name="name">hkxVertexAnimation</hkparam>
+			<hkparam name="parent">#0003</hkparam>
+			<hkparam name="objectSize">192</hkparam>
+			<hkparam name="numImplementedInterfaces">0</hkparam>
+			<hkparam name="declaredEnums" numelements="0"></hkparam>
+			<hkparam name="declaredMembers" numelements="4">
+				<hkobject>
+					<hkparam name="name">time</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_REAL</hkparam>
+					<hkparam name="subtype">TYPE_VOID</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">16</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">vertData</hkparam>
+					<hkparam name="class">#0015</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_STRUCT</hkparam>
+					<hkparam name="subtype">TYPE_VOID</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">24</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">vertexIndexMap</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_ARRAY</hkparam>
+					<hkparam name="subtype">TYPE_INT32</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">160</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">componentMap</hkparam>
+					<hkparam name="class">#0012</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_ARRAY</hkparam>
+					<hkparam name="subtype">TYPE_STRUCT</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">176</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+			</hkparam>
+			<!-- defaults SERIALIZE_IGNORED -->
+			<!-- attributes SERIALIZE_IGNORED -->
+			<hkparam name="flags">0</hkparam>
+			<hkparam name="describedVersion">0</hkparam>
+		</hkobject>
+
+		<hkobject name="#0020" class="hkClass" signature="0x33d42383">
+			<hkparam name="name">hkxMaterialProperty</hkparam>
+			<hkparam name="parent">null</hkparam>
+			<hkparam name="objectSize">8</hkparam>
+			<hkparam name="numImplementedInterfaces">0</hkparam>
+			<hkparam name="declaredEnums" numelements="0"></hkparam>
+			<hkparam name="declaredMembers" numelements="2">
+				<hkobject>
+					<hkparam name="name">key</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_UINT32</hkparam>
+					<hkparam name="subtype">TYPE_VOID</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">0</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">value</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_UINT32</hkparam>
+					<hkparam name="subtype">TYPE_VOID</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">4</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+			</hkparam>
+			<!-- defaults SERIALIZE_IGNORED -->
+			<!-- attributes SERIALIZE_IGNORED -->
+			<hkparam name="flags">0</hkparam>
+			<hkparam name="describedVersion">0</hkparam>
+		</hkobject>
+
+		<hkobject name="#0021" class="hkClassEnum" signature="0x8a3609cf">
+			<hkparam name="name">Transparency</hkparam>
+			<hkparam name="items" numelements="5">
+				<hkobject>
+					<hkparam name="value">0</hkparam>
+					<hkparam name="name">transp_none</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="value">2</hkparam>
+					<hkparam name="name">transp_alpha</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="value">3</hkparam>
+					<hkparam name="name">transp_additive</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="value">4</hkparam>
+					<hkparam name="name">transp_colorkey</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="value">9</hkparam>
+					<hkparam name="name">transp_subtractive</hkparam>
+				</hkobject>
+			</hkparam>
+			<!-- attributes SERIALIZE_IGNORED -->
+			<hkparam name="flags">0</hkparam>
+		</hkobject>
+
+		<hkobject name="#0022" class="hkClassEnum" signature="0x8a3609cf">
+			<hkparam name="name">UVMappingAlgorithm</hkparam>
+			<hkparam name="items" numelements="4">
+				<hkobject>
+					<hkparam name="value">0</hkparam>
+					<hkparam name="name">UVMA_SRT</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="value">1</hkparam>
+					<hkparam name="name">UVMA_TRS</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="value">2</hkparam>
+					<hkparam name="name">UVMA_3DSMAX_STYLE</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="value">3</hkparam>
+					<hkparam name="name">UVMA_MAYA_STYLE</hkparam>
+				</hkobject>
+			</hkparam>
+			<!-- attributes SERIALIZE_IGNORED -->
+			<hkparam name="flags">0</hkparam>
+		</hkobject>
+
+		<hkobject name="#0023" class="hkClassEnum" signature="0x8a3609cf">
+			<hkparam name="name">TextureType</hkparam>
+			<hkparam name="items" numelements="14">
+				<hkobject>
+					<hkparam name="value">0</hkparam>
+					<hkparam name="name">TEX_UNKNOWN</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="value">1</hkparam>
+					<hkparam name="name">TEX_DIFFUSE</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="value">2</hkparam>
+					<hkparam name="name">TEX_REFLECTION</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="value">3</hkparam>
+					<hkparam name="name">TEX_BUMP</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="value">4</hkparam>
+					<hkparam name="name">TEX_NORMAL</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="value">5</hkparam>
+					<hkparam name="name">TEX_DISPLACEMENT</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="value">6</hkparam>
+					<hkparam name="name">TEX_SPECULAR</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="value">7</hkparam>
+					<hkparam name="name">TEX_SPECULARANDGLOSS</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="value">8</hkparam>
+					<hkparam name="name">TEX_OPACITY</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="value">9</hkparam>
+					<hkparam name="name">TEX_EMISSIVE</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="value">10</hkparam>
+					<hkparam name="name">TEX_REFRACTION</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="value">11</hkparam>
+					<hkparam name="name">TEX_GLOSS</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="value">12</hkparam>
+					<hkparam name="name">TEX_DOMINANTS</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="value">13</hkparam>
+					<hkparam name="name">TEX_NOTEXPORTED</hkparam>
+				</hkobject>
+			</hkparam>
+			<!-- attributes SERIALIZE_IGNORED -->
+			<hkparam name="flags">0</hkparam>
+		</hkobject>
+
+		<hkobject name="#0024" class="hkClass" signature="0x33d42383">
+			<hkparam name="name">hkxMaterialTextureStage</hkparam>
+			<hkparam name="parent">null</hkparam>
+			<hkparam name="objectSize">16</hkparam>
+			<hkparam name="numImplementedInterfaces">0</hkparam>
+			<hkparam name="declaredEnums" numelements="0"></hkparam>
+			<hkparam name="declaredMembers" numelements="3">
+				<hkobject>
+					<hkparam name="name">texture</hkparam>
+					<hkparam name="class">#0003</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_POINTER</hkparam>
+					<hkparam name="subtype">TYPE_STRUCT</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">0</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">usageHint</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">#0023</hkparam>
+					<hkparam name="type">TYPE_ENUM</hkparam>
+					<hkparam name="subtype">TYPE_INT32</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">8</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">tcoordChannel</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_INT32</hkparam>
+					<hkparam name="subtype">TYPE_VOID</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">12</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+			</hkparam>
+			<!-- defaults SERIALIZE_IGNORED -->
+			<!-- attributes SERIALIZE_IGNORED -->
+			<hkparam name="flags">0</hkparam>
+			<hkparam name="describedVersion">1</hkparam>
+		</hkobject>
+
+		<hkobject name="#0025" class="hkClass" signature="0x33d42383">
+			<hkparam name="name">hkxMaterial</hkparam>
+			<hkparam name="parent">#0008</hkparam>
+			<hkparam name="objectSize">224</hkparam>
+			<hkparam name="numImplementedInterfaces">0</hkparam>
+			<hkparam name="declaredEnums" numelements="4">
+				<hkobject>
+					<hkparam name="name">TextureType</hkparam>
+					<hkparam name="items" numelements="14">
+						<hkobject>
+							<hkparam name="value">0</hkparam>
+							<hkparam name="name">TEX_UNKNOWN</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">1</hkparam>
+							<hkparam name="name">TEX_DIFFUSE</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">2</hkparam>
+							<hkparam name="name">TEX_REFLECTION</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">3</hkparam>
+							<hkparam name="name">TEX_BUMP</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">4</hkparam>
+							<hkparam name="name">TEX_NORMAL</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">5</hkparam>
+							<hkparam name="name">TEX_DISPLACEMENT</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">6</hkparam>
+							<hkparam name="name">TEX_SPECULAR</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">7</hkparam>
+							<hkparam name="name">TEX_SPECULARANDGLOSS</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">8</hkparam>
+							<hkparam name="name">TEX_OPACITY</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">9</hkparam>
+							<hkparam name="name">TEX_EMISSIVE</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">10</hkparam>
+							<hkparam name="name">TEX_REFRACTION</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">11</hkparam>
+							<hkparam name="name">TEX_GLOSS</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">12</hkparam>
+							<hkparam name="name">TEX_DOMINANTS</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">13</hkparam>
+							<hkparam name="name">TEX_NOTEXPORTED</hkparam>
+						</hkobject>
+					</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+					<hkparam name="flags">0</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">PropertyKey</hkparam>
+					<hkparam name="items" numelements="18">
+						<hkobject>
+							<hkparam name="value">1</hkparam>
+							<hkparam name="name">PROPERTY_MTL_TYPE_BLEND</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">256</hkparam>
+							<hkparam name="name">PROPERTY_MTL_UV_ID_STAGE0</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">257</hkparam>
+							<hkparam name="name">PROPERTY_MTL_UV_ID_STAGE1</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">258</hkparam>
+							<hkparam name="name">PROPERTY_MTL_UV_ID_STAGE2</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">259</hkparam>
+							<hkparam name="name">PROPERTY_MTL_UV_ID_STAGE3</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">260</hkparam>
+							<hkparam name="name">PROPERTY_MTL_UV_ID_STAGE4</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">261</hkparam>
+							<hkparam name="name">PROPERTY_MTL_UV_ID_STAGE5</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">262</hkparam>
+							<hkparam name="name">PROPERTY_MTL_UV_ID_STAGE6</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">263</hkparam>
+							<hkparam name="name">PROPERTY_MTL_UV_ID_STAGE7</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">264</hkparam>
+							<hkparam name="name">PROPERTY_MTL_UV_ID_STAGE8</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">265</hkparam>
+							<hkparam name="name">PROPERTY_MTL_UV_ID_STAGE9</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">266</hkparam>
+							<hkparam name="name">PROPERTY_MTL_UV_ID_STAGE10</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">267</hkparam>
+							<hkparam name="name">PROPERTY_MTL_UV_ID_STAGE11</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">268</hkparam>
+							<hkparam name="name">PROPERTY_MTL_UV_ID_STAGE12</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">269</hkparam>
+							<hkparam name="name">PROPERTY_MTL_UV_ID_STAGE13</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">270</hkparam>
+							<hkparam name="name">PROPERTY_MTL_UV_ID_STAGE14</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">271</hkparam>
+							<hkparam name="name">PROPERTY_MTL_UV_ID_STAGE15</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">272</hkparam>
+							<hkparam name="name">PROPERTY_MTL_UV_ID_STAGE_MAX</hkparam>
+						</hkobject>
+					</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+					<hkparam name="flags">0</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">UVMappingAlgorithm</hkparam>
+					<hkparam name="items" numelements="4">
+						<hkobject>
+							<hkparam name="value">0</hkparam>
+							<hkparam name="name">UVMA_SRT</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">1</hkparam>
+							<hkparam name="name">UVMA_TRS</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">2</hkparam>
+							<hkparam name="name">UVMA_3DSMAX_STYLE</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">3</hkparam>
+							<hkparam name="name">UVMA_MAYA_STYLE</hkparam>
+						</hkobject>
+					</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+					<hkparam name="flags">0</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">Transparency</hkparam>
+					<hkparam name="items" numelements="5">
+						<hkobject>
+							<hkparam name="value">0</hkparam>
+							<hkparam name="name">transp_none</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">2</hkparam>
+							<hkparam name="name">transp_alpha</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">3</hkparam>
+							<hkparam name="name">transp_additive</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">4</hkparam>
+							<hkparam name="name">transp_colorkey</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">9</hkparam>
+							<hkparam name="name">transp_subtractive</hkparam>
+						</hkobject>
+					</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+					<hkparam name="flags">0</hkparam>
+				</hkobject>
+			</hkparam>
+			<hkparam name="declaredMembers" numelements="17">
+				<hkobject>
+					<hkparam name="name">name</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_STRINGPTR</hkparam>
+					<hkparam name="subtype">TYPE_VOID</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">32</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">stages</hkparam>
+					<hkparam name="class">#0024</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_ARRAY</hkparam>
+					<hkparam name="subtype">TYPE_STRUCT</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">40</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">diffuseColor</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_VECTOR4</hkparam>
+					<hkparam name="subtype">TYPE_VOID</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">64</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">ambientColor</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_VECTOR4</hkparam>
+					<hkparam name="subtype">TYPE_VOID</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">80</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">specularColor</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_VECTOR4</hkparam>
+					<hkparam name="subtype">TYPE_VOID</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">96</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">emissiveColor</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_VECTOR4</hkparam>
+					<hkparam name="subtype">TYPE_VOID</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">112</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">subMaterials</hkparam>
+					<hkparam name="class">#0025</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_ARRAY</hkparam>
+					<hkparam name="subtype">TYPE_POINTER</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">128</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">extraData</hkparam>
+					<hkparam name="class">#0003</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_POINTER</hkparam>
+					<hkparam name="subtype">TYPE_STRUCT</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">144</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">uvMapScale</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_REAL</hkparam>
+					<hkparam name="subtype">TYPE_VOID</hkparam>
+					<hkparam name="cArraySize">2</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">152</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">uvMapOffset</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_REAL</hkparam>
+					<hkparam name="subtype">TYPE_VOID</hkparam>
+					<hkparam name="cArraySize">2</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">160</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">uvMapRotation</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_REAL</hkparam>
+					<hkparam name="subtype">TYPE_VOID</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">168</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">uvMapAlgorithm</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">#0022</hkparam>
+					<hkparam name="type">TYPE_ENUM</hkparam>
+					<hkparam name="subtype">TYPE_UINT32</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">172</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">specularMultiplier</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_REAL</hkparam>
+					<hkparam name="subtype">TYPE_VOID</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">176</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">specularExponent</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_REAL</hkparam>
+					<hkparam name="subtype">TYPE_VOID</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">180</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">transparency</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">#0021</hkparam>
+					<hkparam name="type">TYPE_ENUM</hkparam>
+					<hkparam name="subtype">TYPE_UINT8</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">184</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">userData</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_ULONG</hkparam>
+					<hkparam name="subtype">TYPE_VOID</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">192</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">properties</hkparam>
+					<hkparam name="class">#0020</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_ARRAY</hkparam>
+					<hkparam name="subtype">TYPE_STRUCT</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">200</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+			</hkparam>
+			<!-- defaults SERIALIZE_IGNORED -->
+			<!-- attributes SERIALIZE_IGNORED -->
+			<hkparam name="flags">0</hkparam>
+			<hkparam name="describedVersion">5</hkparam>
+		</hkobject>
+
+		<hkobject name="#0026" class="hkClassEnum" signature="0x8a3609cf">
+			<hkparam name="name">IndexType</hkparam>
+			<hkparam name="items" numelements="5">
+				<hkobject>
+					<hkparam name="value">0</hkparam>
+					<hkparam name="name">INDEX_TYPE_INVALID</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="value">1</hkparam>
+					<hkparam name="name">INDEX_TYPE_TRI_LIST</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="value">2</hkparam>
+					<hkparam name="name">INDEX_TYPE_TRI_STRIP</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="value">3</hkparam>
+					<hkparam name="name">INDEX_TYPE_TRI_FAN</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="value">4</hkparam>
+					<hkparam name="name">INDEX_TYPE_MAX_ID</hkparam>
+				</hkobject>
+			</hkparam>
+			<!-- attributes SERIALIZE_IGNORED -->
+			<hkparam name="flags">0</hkparam>
+		</hkobject>
+
+		<hkobject name="#0027" class="hkClass" signature="0x33d42383">
+			<hkparam name="name">hkxIndexBuffer</hkparam>
+			<hkparam name="parent">#0003</hkparam>
+			<hkparam name="objectSize">64</hkparam>
+			<hkparam name="numImplementedInterfaces">0</hkparam>
+			<hkparam name="declaredEnums" numelements="1">
+				<hkobject>
+					<hkparam name="name">IndexType</hkparam>
+					<hkparam name="items" numelements="5">
+						<hkobject>
+							<hkparam name="value">0</hkparam>
+							<hkparam name="name">INDEX_TYPE_INVALID</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">1</hkparam>
+							<hkparam name="name">INDEX_TYPE_TRI_LIST</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">2</hkparam>
+							<hkparam name="name">INDEX_TYPE_TRI_STRIP</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">3</hkparam>
+							<hkparam name="name">INDEX_TYPE_TRI_FAN</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">4</hkparam>
+							<hkparam name="name">INDEX_TYPE_MAX_ID</hkparam>
+						</hkobject>
+					</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+					<hkparam name="flags">0</hkparam>
+				</hkobject>
+			</hkparam>
+			<hkparam name="declaredMembers" numelements="5">
+				<hkobject>
+					<hkparam name="name">indexType</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">#0026</hkparam>
+					<hkparam name="type">TYPE_ENUM</hkparam>
+					<hkparam name="subtype">TYPE_INT8</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">16</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">indices16</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_ARRAY</hkparam>
+					<hkparam name="subtype">TYPE_UINT16</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">24</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">indices32</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_ARRAY</hkparam>
+					<hkparam name="subtype">TYPE_UINT32</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">40</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">vertexBaseOffset</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_UINT32</hkparam>
+					<hkparam name="subtype">TYPE_VOID</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">56</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">length</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_UINT32</hkparam>
+					<hkparam name="subtype">TYPE_VOID</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">60</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+			</hkparam>
+			<!-- defaults SERIALIZE_IGNORED -->
+			<!-- attributes SERIALIZE_IGNORED -->
+			<hkparam name="flags">0</hkparam>
+			<hkparam name="describedVersion">1</hkparam>
+		</hkobject>
+
+		<hkobject name="#0028" class="hkClass" signature="0x33d42383">
+			<hkparam name="name">hkxMeshSection</hkparam>
+			<hkparam name="parent">#0003</hkparam>
+			<hkparam name="objectSize">112</hkparam>
+			<hkparam name="numImplementedInterfaces">0</hkparam>
+			<hkparam name="declaredEnums" numelements="0"></hkparam>
+			<hkparam name="declaredMembers" numelements="7">
+				<hkobject>
+					<hkparam name="name">vertexBuffer</hkparam>
+					<hkparam name="class">#0015</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_POINTER</hkparam>
+					<hkparam name="subtype">TYPE_STRUCT</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">16</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">indexBuffers</hkparam>
+					<hkparam name="class">#0027</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_ARRAY</hkparam>
+					<hkparam name="subtype">TYPE_POINTER</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">24</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">material</hkparam>
+					<hkparam name="class">#0025</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_POINTER</hkparam>
+					<hkparam name="subtype">TYPE_STRUCT</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">40</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">userChannels</hkparam>
+					<hkparam name="class">#0003</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_ARRAY</hkparam>
+					<hkparam name="subtype">TYPE_POINTER</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">48</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">vertexAnimations</hkparam>
+					<hkparam name="class">#0014</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_ARRAY</hkparam>
+					<hkparam name="subtype">TYPE_POINTER</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">64</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">linearKeyFrameHints</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_ARRAY</hkparam>
+					<hkparam name="subtype">TYPE_REAL</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">80</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">boneMatrixMap</hkparam>
+					<hkparam name="class">#0011</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_ARRAY</hkparam>
+					<hkparam name="subtype">TYPE_STRUCT</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">96</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+			</hkparam>
+			<!-- defaults SERIALIZE_IGNORED -->
+			<!-- attributes SERIALIZE_IGNORED -->
+			<hkparam name="flags">0</hkparam>
+			<hkparam name="describedVersion">5</hkparam>
+		</hkobject>
+
+		<hkobject name="#0029" class="hkClass" signature="0x33d42383">
+			<hkparam name="name">hkxMesh</hkparam>
+			<hkparam name="parent">#0003</hkparam>
+			<hkparam name="objectSize">48</hkparam>
+			<hkparam name="numImplementedInterfaces">0</hkparam>
+			<hkparam name="declaredEnums" numelements="0"></hkparam>
+			<hkparam name="declaredMembers" numelements="2">
+				<hkobject>
+					<hkparam name="name">sections</hkparam>
+					<hkparam name="class">#0028</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_ARRAY</hkparam>
+					<hkparam name="subtype">TYPE_POINTER</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">16</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">userChannelInfos</hkparam>
+					<hkparam name="class">#0007</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_ARRAY</hkparam>
+					<hkparam name="subtype">TYPE_POINTER</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">32</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+			</hkparam>
+			<!-- defaults SERIALIZE_IGNORED -->
+			<!-- attributes SERIALIZE_IGNORED -->
+			<hkparam name="flags">0</hkparam>
+			<hkparam name="describedVersion">1</hkparam>
+		</hkobject>
+
+		<hkobject name="#0032" class="hkClass" signature="0x33d42383">
+			<hkparam name="name">hkaSkeletonPartition</hkparam>
+			<hkparam name="parent">null</hkparam>
+			<hkparam name="objectSize">16</hkparam>
+			<hkparam name="numImplementedInterfaces">0</hkparam>
+			<hkparam name="declaredEnums" numelements="0"></hkparam>
+			<hkparam name="declaredMembers" numelements="3">
+				<hkobject>
+					<hkparam name="name">name</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_STRINGPTR</hkparam>
+					<hkparam name="subtype">TYPE_VOID</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">0</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">startBoneIndex</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_INT16</hkparam>
+					<hkparam name="subtype">TYPE_VOID</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">8</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">numBones</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_INT16</hkparam>
+					<hkparam name="subtype">TYPE_VOID</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">10</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+			</hkparam>
+			<!-- defaults SERIALIZE_IGNORED -->
+			<!-- attributes SERIALIZE_IGNORED -->
+			<hkparam name="flags">0</hkparam>
+			<hkparam name="describedVersion">1</hkparam>
+		</hkobject>
+
+		<hkobject name="#0034" class="hkClass" signature="0x33d42383">
+			<hkparam name="name">hkLocalFrame</hkparam>
+			<hkparam name="parent">#0003</hkparam>
+			<hkparam name="objectSize">16</hkparam>
+			<hkparam name="numImplementedInterfaces">0</hkparam>
+			<hkparam name="declaredEnums" numelements="0"></hkparam>
+			<hkparam name="declaredMembers" numelements="0"></hkparam>
+			<!-- defaults SERIALIZE_IGNORED -->
+			<!-- attributes SERIALIZE_IGNORED -->
+			<hkparam name="flags">0</hkparam>
+			<hkparam name="describedVersion">0</hkparam>
+		</hkobject>
+
+		<hkobject name="#0033" class="hkClass" signature="0x33d42383">
+			<hkparam name="name">hkaSkeletonLocalFrameOnBone</hkparam>
+			<hkparam name="parent">null</hkparam>
+			<hkparam name="objectSize">16</hkparam>
+			<hkparam name="numImplementedInterfaces">0</hkparam>
+			<hkparam name="declaredEnums" numelements="0"></hkparam>
+			<hkparam name="declaredMembers" numelements="2">
+				<hkobject>
+					<hkparam name="name">localFrame</hkparam>
+					<hkparam name="class">#0034</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_POINTER</hkparam>
+					<hkparam name="subtype">TYPE_STRUCT</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">0</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">boneIndex</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_INT16</hkparam>
+					<hkparam name="subtype">TYPE_VOID</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">8</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+			</hkparam>
+			<!-- defaults SERIALIZE_IGNORED -->
+			<!-- attributes SERIALIZE_IGNORED -->
+			<hkparam name="flags">0</hkparam>
+			<hkparam name="describedVersion">0</hkparam>
+		</hkobject>
+
+		<hkobject name="#0035" class="hkClass" signature="0x33d42383">
+			<hkparam name="name">hkaBone</hkparam>
+			<hkparam name="parent">null</hkparam>
+			<hkparam name="objectSize">16</hkparam>
+			<hkparam name="numImplementedInterfaces">0</hkparam>
+			<hkparam name="declaredEnums" numelements="0"></hkparam>
+			<hkparam name="declaredMembers" numelements="2">
+				<hkobject>
+					<hkparam name="name">name</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_STRINGPTR</hkparam>
+					<hkparam name="subtype">TYPE_VOID</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">0</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">lockTranslation</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_BOOL</hkparam>
+					<hkparam name="subtype">TYPE_VOID</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">8</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+			</hkparam>
+			<!-- defaults SERIALIZE_IGNORED -->
+			<!-- attributes SERIALIZE_IGNORED -->
+			<hkparam name="flags">0</hkparam>
+			<hkparam name="describedVersion">0</hkparam>
+		</hkobject>
+
+		<hkobject name="#0031" class="hkClass" signature="0x33d42383">
+			<hkparam name="name">hkaSkeleton</hkparam>
+			<hkparam name="parent">#0003</hkparam>
+			<hkparam name="objectSize">136</hkparam>
+			<hkparam name="numImplementedInterfaces">0</hkparam>
+			<hkparam name="declaredEnums" numelements="0"></hkparam>
+			<hkparam name="declaredMembers" numelements="8">
+				<hkobject>
+					<hkparam name="name">name</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_STRINGPTR</hkparam>
+					<hkparam name="subtype">TYPE_VOID</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">16</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">parentIndices</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_ARRAY</hkparam>
+					<hkparam name="subtype">TYPE_INT16</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">24</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">bones</hkparam>
+					<hkparam name="class">#0035</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_ARRAY</hkparam>
+					<hkparam name="subtype">TYPE_STRUCT</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">40</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">referencePose</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_ARRAY</hkparam>
+					<hkparam name="subtype">TYPE_QSTRANSFORM</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">56</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">referenceFloats</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_ARRAY</hkparam>
+					<hkparam name="subtype">TYPE_REAL</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">72</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">floatSlots</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_ARRAY</hkparam>
+					<hkparam name="subtype">TYPE_STRINGPTR</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">88</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">localFrames</hkparam>
+					<hkparam name="class">#0033</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_ARRAY</hkparam>
+					<hkparam name="subtype">TYPE_STRUCT</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">104</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">partitions</hkparam>
+					<hkparam name="class">#0032</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_ARRAY</hkparam>
+					<hkparam name="subtype">TYPE_STRUCT</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">120</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+			</hkparam>
+			<!-- defaults SERIALIZE_IGNORED -->
+			<!-- attributes SERIALIZE_IGNORED -->
+			<hkparam name="flags">0</hkparam>
+			<hkparam name="describedVersion">5</hkparam>
+		</hkobject>
+
+		<hkobject name="#0030" class="hkClass" signature="0x33d42383">
+			<hkparam name="name">hkaMeshBinding</hkparam>
+			<hkparam name="parent">#0003</hkparam>
+			<hkparam name="objectSize">80</hkparam>
+			<hkparam name="numImplementedInterfaces">0</hkparam>
+			<hkparam name="declaredEnums" numelements="0"></hkparam>
+			<hkparam name="declaredMembers" numelements="6">
+				<hkobject>
+					<hkparam name="name">mesh</hkparam>
+					<hkparam name="class">#0029</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_POINTER</hkparam>
+					<hkparam name="subtype">TYPE_STRUCT</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">16</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">originalSkeletonName</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_STRINGPTR</hkparam>
+					<hkparam name="subtype">TYPE_VOID</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">24</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">name</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_STRINGPTR</hkparam>
+					<hkparam name="subtype">TYPE_VOID</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">32</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">skeleton</hkparam>
+					<hkparam name="class">#0031</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_POINTER</hkparam>
+					<hkparam name="subtype">TYPE_STRUCT</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">40</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">mappings</hkparam>
+					<hkparam name="class">#0006</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_ARRAY</hkparam>
+					<hkparam name="subtype">TYPE_STRUCT</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">48</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">boneFromSkinMeshTransforms</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_ARRAY</hkparam>
+					<hkparam name="subtype">TYPE_TRANSFORM</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">64</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+			</hkparam>
+			<!-- defaults SERIALIZE_IGNORED -->
+			<!-- attributes SERIALIZE_IGNORED -->
+			<hkparam name="flags">0</hkparam>
+			<hkparam name="describedVersion">3</hkparam>
+		</hkobject>
+
+		<hkobject name="#0036" class="hkClass" signature="0x33d42383">
+			<hkparam name="name">hkaBoneAttachment</hkparam>
+			<hkparam name="parent">#0003</hkparam>
+			<hkparam name="objectSize">128</hkparam>
+			<hkparam name="numImplementedInterfaces">0</hkparam>
+			<hkparam name="declaredEnums" numelements="0"></hkparam>
+			<hkparam name="declaredMembers" numelements="5">
+				<hkobject>
+					<hkparam name="name">originalSkeletonName</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_STRINGPTR</hkparam>
+					<hkparam name="subtype">TYPE_VOID</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">16</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">boneFromAttachment</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_MATRIX4</hkparam>
+					<hkparam name="subtype">TYPE_VOID</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">32</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">attachment</hkparam>
+					<hkparam name="class">#0003</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_POINTER</hkparam>
+					<hkparam name="subtype">TYPE_STRUCT</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">96</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">name</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_STRINGPTR</hkparam>
+					<hkparam name="subtype">TYPE_VOID</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">104</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">boneIndex</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_INT16</hkparam>
+					<hkparam name="subtype">TYPE_VOID</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">112</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+			</hkparam>
+			<!-- defaults SERIALIZE_IGNORED -->
+			<!-- attributes SERIALIZE_IGNORED -->
+			<hkparam name="flags">0</hkparam>
+			<hkparam name="describedVersion">2</hkparam>
+		</hkobject>
+
+		<hkobject name="#0037" class="hkClassEnum" signature="0x8a3609cf">
+			<hkparam name="name">BlendHint</hkparam>
+			<hkparam name="items" numelements="3">
+				<hkobject>
+					<hkparam name="value">0</hkparam>
+					<hkparam name="name">NORMAL</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="value">1</hkparam>
+					<hkparam name="name">ADDITIVE_DEPRECATED</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="value">2</hkparam>
+					<hkparam name="name">ADDITIVE</hkparam>
+				</hkobject>
+			</hkparam>
+			<!-- attributes SERIALIZE_IGNORED -->
+			<hkparam name="flags">0</hkparam>
+		</hkobject>
+
+		<hkobject name="#0041" class="hkClass" signature="0x33d42383">
+			<hkparam name="name">hkaAnnotationTrackAnnotation</hkparam>
+			<hkparam name="parent">null</hkparam>
+			<hkparam name="objectSize">16</hkparam>
+			<hkparam name="numImplementedInterfaces">0</hkparam>
+			<hkparam name="declaredEnums" numelements="0"></hkparam>
+			<hkparam name="declaredMembers" numelements="2">
+				<hkobject>
+					<hkparam name="name">time</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_REAL</hkparam>
+					<hkparam name="subtype">TYPE_VOID</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">0</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">text</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_STRINGPTR</hkparam>
+					<hkparam name="subtype">TYPE_VOID</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">8</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+			</hkparam>
+			<!-- defaults SERIALIZE_IGNORED -->
+			<!-- attributes SERIALIZE_IGNORED -->
+			<hkparam name="flags">0</hkparam>
+			<hkparam name="describedVersion">0</hkparam>
+		</hkobject>
+
+		<hkobject name="#0040" class="hkClass" signature="0x33d42383">
+			<hkparam name="name">hkaAnnotationTrack</hkparam>
+			<hkparam name="parent">null</hkparam>
+			<hkparam name="objectSize">24</hkparam>
+			<hkparam name="numImplementedInterfaces">0</hkparam>
+			<hkparam name="declaredEnums" numelements="0"></hkparam>
+			<hkparam name="declaredMembers" numelements="2">
+				<hkobject>
+					<hkparam name="name">trackName</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_STRINGPTR</hkparam>
+					<hkparam name="subtype">TYPE_VOID</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">0</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">annotations</hkparam>
+					<hkparam name="class">#0041</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_ARRAY</hkparam>
+					<hkparam name="subtype">TYPE_STRUCT</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">8</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+			</hkparam>
+			<!-- defaults SERIALIZE_IGNORED -->
+			<!-- attributes SERIALIZE_IGNORED -->
+			<hkparam name="flags">0</hkparam>
+			<hkparam name="describedVersion">0</hkparam>
+		</hkobject>
+
+		<hkobject name="#0042" class="hkClass" signature="0x33d42383">
+			<hkparam name="name">hkaAnimatedReferenceFrame</hkparam>
+			<hkparam name="parent">#0003</hkparam>
+			<hkparam name="objectSize">24</hkparam>
+			<hkparam name="numImplementedInterfaces">0</hkparam>
+			<hkparam name="declaredEnums" numelements="1">
+				<hkobject>
+					<hkparam name="name">hkaReferenceFrameTypeEnum</hkparam>
+					<hkparam name="items" numelements="3">
+						<hkobject>
+							<hkparam name="value">0</hkparam>
+							<hkparam name="name">REFERENCE_FRAME_UNKNOWN</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">1</hkparam>
+							<hkparam name="name">REFERENCE_FRAME_DEFAULT</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">2</hkparam>
+							<hkparam name="name">REFERENCE_FRAME_PARAMETRIC</hkparam>
+						</hkobject>
+					</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+					<hkparam name="flags">0</hkparam>
+				</hkobject>
+			</hkparam>
+			<hkparam name="declaredMembers" numelements="1">
+				<hkobject>
+					<hkparam name="name">frameType</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_ENUM</hkparam>
+					<hkparam name="subtype">TYPE_INT8</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">SERIALIZE_IGNORED</hkparam>
+					<hkparam name="offset">16</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+			</hkparam>
+			<!-- defaults SERIALIZE_IGNORED -->
+			<!-- attributes SERIALIZE_IGNORED -->
+			<hkparam name="flags">0</hkparam>
+			<hkparam name="describedVersion">0</hkparam>
+		</hkobject>
+
+		<hkobject name="#0043" class="hkClassEnum" signature="0x8a3609cf">
+			<hkparam name="name">AnimationType</hkparam>
+			<hkparam name="items" numelements="7">
+				<hkobject>
+					<hkparam name="value">0</hkparam>
+					<hkparam name="name">HK_UNKNOWN_ANIMATION</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="value">1</hkparam>
+					<hkparam name="name">HK_INTERLEAVED_ANIMATION</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="value">2</hkparam>
+					<hkparam name="name">HK_MIRRORED_ANIMATION</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="value">3</hkparam>
+					<hkparam name="name">HK_SPLINE_COMPRESSED_ANIMATION</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="value">4</hkparam>
+					<hkparam name="name">HK_QUANTIZED_COMPRESSED_ANIMATION</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="value">5</hkparam>
+					<hkparam name="name">HK_PREDICTIVE_COMPRESSED_ANIMATION</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="value">6</hkparam>
+					<hkparam name="name">HK_REFERENCE_POSE_ANIMATION</hkparam>
+				</hkobject>
+			</hkparam>
+			<!-- attributes SERIALIZE_IGNORED -->
+			<hkparam name="flags">0</hkparam>
+		</hkobject>
+
+		<hkobject name="#0039" class="hkClass" signature="0x33d42383">
+			<hkparam name="name">hkaAnimation</hkparam>
+			<hkparam name="parent">#0003</hkparam>
+			<hkparam name="objectSize">56</hkparam>
+			<hkparam name="numImplementedInterfaces">0</hkparam>
+			<hkparam name="declaredEnums" numelements="1">
+				<hkobject>
+					<hkparam name="name">AnimationType</hkparam>
+					<hkparam name="items" numelements="7">
+						<hkobject>
+							<hkparam name="value">0</hkparam>
+							<hkparam name="name">HK_UNKNOWN_ANIMATION</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">1</hkparam>
+							<hkparam name="name">HK_INTERLEAVED_ANIMATION</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">2</hkparam>
+							<hkparam name="name">HK_MIRRORED_ANIMATION</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">3</hkparam>
+							<hkparam name="name">HK_SPLINE_COMPRESSED_ANIMATION</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">4</hkparam>
+							<hkparam name="name">HK_QUANTIZED_COMPRESSED_ANIMATION</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">5</hkparam>
+							<hkparam name="name">HK_PREDICTIVE_COMPRESSED_ANIMATION</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">6</hkparam>
+							<hkparam name="name">HK_REFERENCE_POSE_ANIMATION</hkparam>
+						</hkobject>
+					</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+					<hkparam name="flags">0</hkparam>
+				</hkobject>
+			</hkparam>
+			<hkparam name="declaredMembers" numelements="6">
+				<hkobject>
+					<hkparam name="name">type</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">#0043</hkparam>
+					<hkparam name="type">TYPE_ENUM</hkparam>
+					<hkparam name="subtype">TYPE_INT32</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">16</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">duration</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_REAL</hkparam>
+					<hkparam name="subtype">TYPE_VOID</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">20</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">numberOfTransformTracks</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_INT32</hkparam>
+					<hkparam name="subtype">TYPE_VOID</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">24</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">numberOfFloatTracks</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_INT32</hkparam>
+					<hkparam name="subtype">TYPE_VOID</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">28</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">extractedMotion</hkparam>
+					<hkparam name="class">#0042</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_POINTER</hkparam>
+					<hkparam name="subtype">TYPE_STRUCT</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">32</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">annotationTracks</hkparam>
+					<hkparam name="class">#0040</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_ARRAY</hkparam>
+					<hkparam name="subtype">TYPE_STRUCT</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">40</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+			</hkparam>
+			<!-- defaults SERIALIZE_IGNORED -->
+			<!-- attributes SERIALIZE_IGNORED -->
+			<hkparam name="flags">0</hkparam>
+			<hkparam name="describedVersion">3</hkparam>
+		</hkobject>
+
+		<hkobject name="#0038" class="hkClass" signature="0x33d42383">
+			<hkparam name="name">hkaAnimationBinding</hkparam>
+			<hkparam name="parent">#0003</hkparam>
+			<hkparam name="objectSize">88</hkparam>
+			<hkparam name="numImplementedInterfaces">0</hkparam>
+			<hkparam name="declaredEnums" numelements="1">
+				<hkobject>
+					<hkparam name="name">BlendHint</hkparam>
+					<hkparam name="items" numelements="3">
+						<hkobject>
+							<hkparam name="value">0</hkparam>
+							<hkparam name="name">NORMAL</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">1</hkparam>
+							<hkparam name="name">ADDITIVE_DEPRECATED</hkparam>
+						</hkobject>
+						<hkobject>
+							<hkparam name="value">2</hkparam>
+							<hkparam name="name">ADDITIVE</hkparam>
+						</hkobject>
+					</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+					<hkparam name="flags">0</hkparam>
+				</hkobject>
+			</hkparam>
+			<hkparam name="declaredMembers" numelements="6">
+				<hkobject>
+					<hkparam name="name">originalSkeletonName</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_STRINGPTR</hkparam>
+					<hkparam name="subtype">TYPE_VOID</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">16</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">animation</hkparam>
+					<hkparam name="class">#0039</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_POINTER</hkparam>
+					<hkparam name="subtype">TYPE_STRUCT</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">24</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">transformTrackToBoneIndices</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_ARRAY</hkparam>
+					<hkparam name="subtype">TYPE_INT16</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">32</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">floatTrackToFloatSlotIndices</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_ARRAY</hkparam>
+					<hkparam name="subtype">TYPE_INT16</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">48</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">partitionIndices</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_ARRAY</hkparam>
+					<hkparam name="subtype">TYPE_INT16</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">64</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">blendHint</hkparam>
+					<hkparam name="class">null</hkparam>
+					<hkparam name="enum">#0037</hkparam>
+					<hkparam name="type">TYPE_ENUM</hkparam>
+					<hkparam name="subtype">TYPE_INT8</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">80</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+			</hkparam>
+			<!-- defaults SERIALIZE_IGNORED -->
+			<!-- attributes SERIALIZE_IGNORED -->
+			<hkparam name="flags">0</hkparam>
+			<hkparam name="describedVersion">3</hkparam>
+		</hkobject>
+
+		<hkobject name="#0044" class="hkClass" signature="0x33d42383">
+			<hkparam name="name">hkaAnimationContainer</hkparam>
+			<hkparam name="parent">#0003</hkparam>
+			<hkparam name="objectSize">96</hkparam>
+			<hkparam name="numImplementedInterfaces">0</hkparam>
+			<hkparam name="declaredEnums" numelements="0"></hkparam>
+			<hkparam name="declaredMembers" numelements="5">
+				<hkobject>
+					<hkparam name="name">skeletons</hkparam>
+					<hkparam name="class">#0031</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_ARRAY</hkparam>
+					<hkparam name="subtype">TYPE_POINTER</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">16</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">animations</hkparam>
+					<hkparam name="class">#0039</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_ARRAY</hkparam>
+					<hkparam name="subtype">TYPE_POINTER</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">32</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">bindings</hkparam>
+					<hkparam name="class">#0038</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_ARRAY</hkparam>
+					<hkparam name="subtype">TYPE_POINTER</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">48</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">attachments</hkparam>
+					<hkparam name="class">#0036</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_ARRAY</hkparam>
+					<hkparam name="subtype">TYPE_POINTER</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">64</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">skins</hkparam>
+					<hkparam name="class">#0030</hkparam>
+					<hkparam name="enum">null</hkparam>
+					<hkparam name="type">TYPE_ARRAY</hkparam>
+					<hkparam name="subtype">TYPE_POINTER</hkparam>
+					<hkparam name="cArraySize">0</hkparam>
+					<hkparam name="flags">0</hkparam>
+					<hkparam name="offset">80</hkparam>
+					<!-- attributes SERIALIZE_IGNORED -->
+				</hkobject>
+			</hkparam>
+			<!-- defaults SERIALIZE_IGNORED -->
+			<!-- attributes SERIALIZE_IGNORED -->
+			<hkparam name="flags">0</hkparam>
+			<hkparam name="describedVersion">1</hkparam>
+		</hkobject>
+
+	</hksection>
+	<hksection name="__data__">
+
+		<hkobject name="#0045" class="hkaSkeleton" signature="0xfec1cedb">
+			<!-- memSizeAndRefCount SERIALIZE_IGNORED -->
+			<hkparam name="name">Master</hkparam>
+			<hkparam name="parentIndices" numelements="110">
+				-1 0 1 2 0 4 5 0 7 8 8 10 11 11 11 11
+				15 15 10 10 10 10 10 8 8 8 25 26 26 26 26 30
+				30 25 25 25 25 25 8 7 39 40 41 42 43 43 43 43
+				43 48 48 50 50 52 52 52 55 56 57 55 59 60 55 62
+				63 55 65 66 55 68 69 55 55 50 50 43 43 43 77 43
+				79 79 81 81 83 83 83 86 87 88 86 90 91 86 93 94
+				86 96 97 86 99 100 86 86 81 81 43 43 42 42
+			</hkparam>
+			<hkparam name="bones" numelements="110">
+				<hkobject>
+					<hkparam name="name">Master</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">L_Foot_Target2</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">L_Foot_Target1</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">L_Foot_Target</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">R_Foot_Target2</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">R_Foot_Target1</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">R_Foot_Target</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">RootPos</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">Pelvis</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">L_Hip</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">L_Thigh</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">L_Calf</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">L_Calf_Skirt</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">L_CalfTwist</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">L_CalfTwist1</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">L_Foot</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">L_FootTwist</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">L_Toe0</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">L_Knee</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">L_Knee_Skirt</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">L_Thigh_Skirt</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">L_ThighTwist</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">L_ThighTwist1</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">L_Wepon_Case</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">R_Hip</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">R_Thigh</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">R_Calf</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">R_Calf_Skirt</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">R_CalfTwist</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">R_CalfTwist1</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">R_Foot</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">R_FootTwist</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">R_Toe0</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">R_Knee</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">R_Knee_Skirt</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">R_Thigh_Skirt</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">R_ThighTwist</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">R_ThighTwist1</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">R_Wepon_Case</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">RootRotY</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">RootRotXZ</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">Spine</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">Spine1</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">Spine2</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">B_Wepon_Case</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">B_Wepon_Case0_L</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">B_Wepon_Case0_R</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">Collar</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">L_Clavicle</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">L_Shoulder</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">L_UpperArm</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">L_Elbow</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">L_Forearm</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">L_ForeArmTwist</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">L_ForeArmTwist1</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">L_Hand</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">L_Finger0</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">L_Finger01</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">L_Finger02</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">L_Finger1</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">L_Finger11</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">L_Finger12</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">L_Finger2</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">L_Finger21</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">L_Finger22</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">L_Finger3</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">L_Finger31</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">L_Finger32</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">L_Finger4</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">L_Finger41</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">L_Finger42</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">L_Shield</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">L_Weapon</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">L_UpArmTwist</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">L_UpArmTwist1</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">L_Pectoral</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">L_Po</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">Neck</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">Head</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">R_Clavicle</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">R_Shoulder</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">R_UpperArm</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">R_Elbow</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">R_Forearm</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">R_ForeArmTwist</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">R_ForeArmTwist1</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">R_Hand</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">R_Finger0</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">R_Finger01</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">R_Finger02</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">R_Finger1</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">R_Finger11</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">R_Finger12</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">R_Finger2</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">R_Finger21</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">R_Finger22</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">R_Finger3</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">R_Finger31</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">R_Finger32</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">R_Finger4</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">R_Finger41</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">R_Finger42</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">R_Shield</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">R_Weapon</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">R_UpArmTwist</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">R_UpArmTwist1</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">R_Pectoral</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">R_Po</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">SpineArmor1</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="name">SpineArmor2</hkparam>
+					<hkparam name="lockTranslation">false</hkparam>
+				</hkobject>
+			</hkparam>
+			<hkparam name="referencePose" numelements="110">
+				(0.000000 0.000000 0.000000)(0.000000 0.707106 0.000000 0.707107)(1.000000 1.000000 1.000000)
+				(-0.062719 0.976180 0.103349)(-0.499876 0.499877 -0.500124 0.500123)(1.000000 1.000000 1.000000)
+				(0.443363 0.000000 0.000001)(-0.000000 -0.000001 0.000000 1.000000)(1.000000 1.000000 1.000000)
+				(0.423298 -0.000000 -0.000001)(0.000247 -0.000173 0.000000 -1.000000)(1.000000 1.000000 1.000000)
+				(-0.062720 0.976180 -0.103349)(-0.501017 0.501014 -0.498980 0.498985)(1.000000 0.999999 0.999999)
+				(0.443363 0.000001 0.000007)(-0.000000 -0.000004 -0.000000 1.000000)(1.000000 1.000000 1.000000)
+				(0.423298 -0.000001 -0.000017)(-0.002033 -0.000181 -0.000000 -0.999998)(1.000000 1.000000 1.000000)
+				(0.000000 0.970000 0.000000)(0.000000 -0.707106 0.000000 0.707107)(1.000000 1.000000 1.000000)
+				(0.000000 0.000001 0.000000)(0.707106 0.707107 0.000002 0.000002)(1.000000 1.000000 1.000000)
+				(-0.000000 0.103349 -0.005000)(-0.004984 -0.000204 -0.999987 0.000003)(1.000000 1.000000 1.000000)
+				(-0.000000 0.103349 0.000000)(-0.009967 0.000002 -0.999950 0.000001)(1.000001 1.000000 1.000000)
+				(0.443364 -0.000000 0.000000)(0.000000 0.094755 -0.000000 0.995501)(0.999999 0.999999 0.999999)
+				(0.005001 -0.000001 0.000000)(0.000000 0.000000 0.000000 1.000000)(1.000000 1.000000 1.000000)
+				(0.194732 -0.000000 0.000000)(-0.000652 -0.000000 0.000000 -1.000000)(1.000000 1.000000 1.000000)
+				(0.005001 -0.000000 0.000000)(-0.000326 0.000000 -0.000000 -1.000000)(1.000000 1.000000 1.000000)
+				(0.423298 -0.000000 0.000000)(0.000000 -0.084656 0.000000 0.996410)(1.000000 1.000000 1.000000)
+				(0.110369 -0.000001 0.000037)(-0.000001 -0.705491 0.000001 0.708719)(1.000000 1.000000 1.000000)
+				(0.110322 -0.000000 0.134743)(-0.000000 -0.707229 -0.000000 0.706984)(1.000000 1.000000 1.000000)
+				(0.443837 -0.000000 0.004978)(-0.000001 -0.047431 0.000000 -0.998875)(0.999999 0.999998 0.999999)
+				(0.443363 -0.000000 0.000000)(0.000000 0.047431 -0.000000 0.998875)(0.999999 1.000000 1.000000)
+				(-0.000000 -0.000000 0.000000)(-0.000001 0.000000 -0.000000 1.000000)(0.999999 0.999999 1.000000)
+				(0.005000 -0.000000 -0.000000)(0.000688 -0.000000 -0.000000 1.000000)(1.000000 1.000000 1.000000)
+				(0.229000 -0.000000 0.000000)(0.000344 -0.000000 -0.000000 1.000000)(1.000000 1.000001 1.000000)
+				(0.035256 0.185465 0.005854)(-0.235174 0.681729 -0.646934 -0.247820)(1.000000 1.000000 1.000001)
+				(-0.000102 -0.103345 -0.005000)(0.004983 -0.000208 0.999987 0.000001)(1.000000 1.000000 1.000000)
+				(0.000000 -0.103349 -0.000000)(0.009967 0.000000 0.999950 -0.000001)(1.000000 1.000000 1.000001)
+				(0.443363 0.000000 0.000000)(0.000002 -0.094756 0.000000 -0.995501)(0.999999 1.000000 0.999999)
+				(0.005001 -0.000001 0.000000)(0.000000 -0.000000 0.000000 1.000000)(1.000000 1.000000 1.000000)
+				(0.194736 -0.000000 0.000000)(-0.000652 -0.000000 0.000000 1.000000)(1.000000 1.000000 1.000000)
+				(0.005000 -0.000001 0.000000)(-0.000326 -0.000000 0.000000 1.000000)(1.000000 0.999999 0.999999)
+				(0.423298 -0.000000 0.000000)(0.000000 0.084658 0.000000 -0.996410)(1.000000 1.000000 1.000000)
+				(0.110369 -0.000000 0.000038)(-0.000000 -0.705491 -0.000000 0.708719)(1.000001 1.000000 1.000000)
+				(0.110322 -0.000000 0.134743)(-0.000000 0.707229 -0.000000 -0.706984)(1.000000 1.000000 1.000000)
+				(0.443837 0.000000 0.004977)(0.000001 -0.047432 0.000000 -0.998874)(1.000000 0.999999 1.000000)
+				(0.443364 0.000000 -0.000000)(-0.000000 0.047432 -0.000000 0.998874)(1.000000 1.000000 1.000000)
+				(-0.000000 0.000000 0.000000)(0.000004 -0.000000 -0.000000 -1.000000)(1.000000 0.999999 0.999999)
+				(0.005000 -0.000000 0.000000)(-0.000689 0.000000 -0.000000 1.000000)(1.000000 1.000000 0.999999)
+				(0.228981 0.000000 -0.000000)(-0.000345 0.000000 -0.000000 1.000000)(1.000001 1.000000 1.000000)
+				(0.035257 -0.185000 0.005852)(0.247822 -0.646937 0.681726 0.235173)(1.000000 1.000000 1.000000)
+				(0.000000 0.000001 0.000000)(0.000000 0.707106 0.000000 0.707107)(1.000000 1.000000 1.000000)
+				(0.000000 0.000000 0.000000)(0.000000 0.000000 0.000000 1.000000)(1.000000 1.000000 1.000000)
+				(0.000015 0.092979 0.000000)(0.500853 0.500471 0.499146 0.499528)(1.000000 1.000000 1.000000)
+				(0.088243 -0.000000 -0.000067)(0.001243 -0.000017 -0.000004 0.999999)(1.000000 1.000000 1.000000)
+				(0.088245 0.000000 -0.000177)(-0.002567 -0.007101 0.000023 0.999971)(0.999999 1.000000 1.000000)
+				(-0.019836 -0.000288 -0.158610)(0.003198 0.005891 0.477148 0.878797)(1.000000 1.000000 1.000000)
+				(-0.019836 0.097062 -0.158610)(-0.707089 -0.707089 0.005075 0.005076)(1.000000 1.000000 1.000000)
+				(-0.019836 -0.097060 -0.158610)(-0.707089 -0.707089 0.005075 0.005076)(1.000000 1.000000 1.000000)
+				(0.224507 -0.000000 -0.034113)(0.000074 0.000399 0.000155 1.000000)(1.000000 1.000000 1.000000)
+				(0.151227 0.021775 -0.036029)(-0.707107 -0.707107 0.000282 0.000281)(1.000000 1.000000 1.000000)
+				(0.151703 0.004615 -0.000235)(-0.022500 0.007598 -0.195061 0.980503)(1.000000 1.000000 1.000000)
+				(0.149792 0.000000 -0.000000)(0.010970 -0.007931 -0.382724 0.923764)(1.000000 1.000000 1.000000)
+				(0.282360 0.000000 0.004992)(-0.000000 0.028381 -0.000000 0.999597)(0.999999 0.999999 1.000000)
+				(0.282076 0.000001 -0.000000)(-0.000000 0.056738 -0.000000 0.998389)(1.000000 1.000000 1.000000)
+				(0.101075 -0.000000 -0.000000)(0.040612 -0.000000 -0.000000 0.999175)(1.000000 1.000000 1.000000)
+				(0.005000 -0.000000 0.000000)(0.020394 -0.000000 -0.000000 0.999792)(1.000000 1.000000 1.000000)
+				(0.231723 -0.000000 0.000000)(0.706383 -0.031980 0.031980 0.706383)(1.000000 1.000000 1.000000)
+				(0.018262 -0.019700 0.002789)(-0.614696 0.077763 -0.299984 0.725336)(1.000000 1.000000 1.000000)
+				(0.053205 0.000000 -0.000000)(0.000000 0.000000 -0.000000 1.000000)(1.000000 1.000000 1.000000)
+				(0.036069 0.000000 0.000000)(-0.000000 0.013147 0.000000 0.999914)(1.000000 1.000000 1.000000)
+				(0.100587 -0.034513 -0.003777)(0.027601 0.000123 0.000096 0.999619)(1.000000 1.000000 1.000000)
+				(0.044240 -0.000000 0.000000)(0.000000 0.000000 -0.000000 1.000000)(1.000000 1.000000 1.000000)
+				(0.030246 0.000000 0.000000)(0.000000 0.000000 0.000000 1.000000)(1.000000 1.000000 1.000000)
+				(0.100809 -0.010271 -0.004487)(0.027601 0.000124 0.000097 0.999619)(1.000000 1.000000 1.000000)
+				(0.046697 -0.000000 0.000000)(0.000000 -0.000000 -0.000000 1.000000)(1.000000 1.000000 1.000000)
+				(0.031089 0.000000 -0.000000)(-0.000000 0.000000 0.000000 1.000000)(1.000000 1.000000 1.000000)
+				(0.097603 0.013259 -0.002580)(0.027601 0.000124 0.000097 0.999619)(1.000000 1.000000 1.000001)
+				(0.044897 -0.000000 0.000000)(-0.000000 0.000000 -0.000000 1.000000)(1.000000 1.000000 1.000000)
+				(0.031466 0.000000 0.000000)(-0.000000 0.000000 0.000000 1.000000)(1.000000 1.000000 1.000000)
+				(0.095000 0.035745 -0.000053)(0.027510 0.000127 0.000002 0.999622)(1.000000 1.000000 1.000000)
+				(0.039303 0.000000 0.000000)(0.000000 -0.000000 -0.000000 1.000000)(1.000000 1.000000 1.000000)
+				(0.019024 0.000000 0.000000)(-0.000000 0.000000 -0.000000 1.000000)(1.000000 1.000000 1.000000)
+				(0.089982 0.001641 0.012757)(-0.000001 -0.130527 0.000000 0.991445)(1.000000 0.999999 1.000000)
+				(0.089982 0.001641 0.012757)(-1.000000 -0.000000 -0.000000 -0.000001)(1.000000 1.000000 1.000000)
+				(0.005000 0.000001 -0.000000)(-0.059619 -0.000000 0.000000 0.998221)(0.999999 0.999999 1.000000)
+				(0.131669 0.000001 -0.000000)(-0.029823 0.000000 -0.000000 0.999555)(0.999999 1.000000 1.000000)
+				(0.136338 0.020000 0.075688)(-0.677451 -0.720251 0.106499 -0.104672)(1.001551 1.000000 1.000000)
+				(0.061802 0.079900 0.060782)(-0.707089 -0.707089 0.005021 0.005022)(1.000000 1.000000 1.000000)
+				(0.224507 -0.000000 -0.034113)(-0.000003 0.000000 0.000070 1.000000)(1.000000 1.000000 1.000000)
+				(0.068000 0.000012 -0.000054)(0.000004 0.007500 -0.000070 0.999972)(1.000000 1.000000 1.000000)
+				(0.151227 -0.021775 -0.036029)(-0.707107 0.707107 0.000280 -0.000283)(1.000000 1.000000 1.000000)
+				(0.151703 -0.004614 -0.000235)(0.022500 0.007598 0.195061 0.980504)(1.000000 1.000000 1.000000)
+				(0.149792 -0.000000 -0.000000)(-0.010970 -0.007931 0.382724 0.923763)(1.000000 1.000000 1.000000)
+				(0.282359 -0.000000 0.004993)(-0.000000 0.028380 -0.000000 0.999597)(1.000001 1.000001 1.000001)
+				(0.282076 -0.000000 0.000000)(0.000000 0.056738 -0.000000 0.998389)(1.000000 1.000000 1.000000)
+				(0.101143 -0.000000 0.000001)(-0.040444 0.000000 0.000000 0.999182)(1.000001 1.000001 1.000000)
+				(0.005000 -0.000000 0.000001)(-0.020226 -0.000000 0.000000 0.999795)(1.000001 1.000000 1.000001)
+				(0.231723 -0.000000 0.000000)(0.706383 0.031980 0.031980 -0.706383)(1.000000 1.000000 1.000000)
+				(0.018261 0.019700 0.002789)(0.614695 0.077763 0.299985 0.725336)(1.000000 1.000000 1.000000)
+				(0.053205 -0.000000 0.000000)(-0.000000 0.000000 -0.000000 1.000000)(1.000000 1.000000 1.000000)
+				(0.036069 0.000000 -0.000000)(0.000000 0.013147 0.000000 0.999914)(1.000000 1.000000 1.000000)
+				(0.100587 0.034513 -0.003776)(-0.027601 0.000123 -0.000096 0.999619)(0.999999 1.000000 1.000000)
+				(0.044240 0.000000 -0.000000)(-0.000000 0.000000 0.000000 1.000000)(1.000000 1.000000 1.000000)
+				(0.030246 -0.000000 0.000000)(-0.000000 0.000000 0.000000 1.000000)(1.000000 1.000000 1.000000)
+				(0.100809 0.010272 -0.004487)(-0.027601 0.000124 -0.000097 0.999619)(0.999999 1.000000 1.000000)
+				(0.046697 -0.000000 -0.000000)(-0.000000 0.000000 0.000000 1.000000)(1.000000 1.000000 1.000000)
+				(0.031089 0.000000 0.000000)(0.000000 -0.000000 -0.000000 1.000000)(1.000000 1.000000 1.000000)
+				(0.097603 -0.013259 -0.002579)(-0.027602 0.000124 -0.000097 0.999619)(1.000000 1.000000 1.000000)
+				(0.044897 0.000000 -0.000000)(0.000000 0.000000 -0.000000 1.000000)(1.000000 1.000000 1.000000)
+				(0.031466 0.000000 0.000000)(0.000000 0.000000 0.000000 1.000000)(1.000000 1.000000 1.000000)
+				(0.095000 -0.035745 -0.000052)(-0.027510 0.000127 -0.000002 0.999622)(1.000000 1.000000 1.000000)
+				(0.039303 -0.000000 0.000000)(0.000000 0.000000 0.000000 1.000000)(1.000000 1.000000 1.000000)
+				(0.019024 0.000000 0.000000)(0.000005 -0.000002 0.000003 1.000000)(1.000000 1.000000 1.000000)
+				(0.089982 -0.001642 0.012754)(0.000000 -0.130526 -0.000000 0.991445)(1.000000 1.000000 1.000000)
+				(0.089982 -0.001642 0.012754)(0.000000 -0.000000 -0.000000 1.000000)(1.000000 1.000000 1.000000)
+				(0.005000 -0.000000 0.000001)(0.059619 -0.000000 0.000000 0.998221)(1.000000 1.000000 1.000000)
+				(0.132000 -0.000000 0.000000)(0.029823 -0.000000 0.000000 0.999555)(1.000000 1.000000 1.000000)
+				(0.136337 -0.020000 0.075688)(0.103204 0.108451 -0.712275 0.685749)(1.001555 1.000000 1.000000)
+				(0.061802 -0.079900 0.060782)(-0.707089 -0.707089 0.005021 0.005022)(1.000000 1.000000 1.000000)
+				(0.239243 0.000001 -0.000309)(-0.002485 0.000040 0.000005 0.999997)(1.000000 1.000000 1.000000)
+				(0.239243 0.000001 -0.000309)(-0.002496 0.000070 0.000005 0.999997)(0.999999 1.000000 1.000000)
+			</hkparam>
+			<hkparam name="referenceFloats" numelements="0"></hkparam>
+			<hkparam name="floatSlots" numelements="0"></hkparam>
+			<hkparam name="localFrames" numelements="0"></hkparam>
+			<hkparam name="partitions" numelements="0"></hkparam>
+		</hkobject>
+
+		<hkobject name="#0046" class="hkaAnimationContainer" signature="0x26859f4c">
+			<!-- memSizeAndRefCount SERIALIZE_IGNORED -->
+			<hkparam name="skeletons" numelements="1">
+				#0045
+			</hkparam>
+			<hkparam name="animations" numelements="0"></hkparam>
+			<hkparam name="bindings" numelements="0"></hkparam>
+			<hkparam name="attachments" numelements="0"></hkparam>
+			<hkparam name="skins" numelements="0"></hkparam>
+		</hkobject>
+
+		<hkobject name="#0001" class="hkRootLevelContainer" signature="0x2772c11e">
+			<hkparam name="namedVariants" numelements="1">
+				<hkobject>
+					<hkparam name="name">Merged Animation Container</hkparam>
+					<hkparam name="className">hkaAnimationContainer</hkparam>
+					<hkparam name="variant">#0046</hkparam>
+				</hkobject>
+			</hkparam>
+		</hkobject>
+
+	</hksection>
+
+</hkpackfile>
