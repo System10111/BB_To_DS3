@@ -137,6 +137,8 @@ public class UIController : MonoBehaviour
 
     public void MassConvert()
     {
+        if (mass_files.Count == 0 || mass_output.Count == 0) return;
+        System.IO.Directory.CreateDirectory(System.IO.Path.GetDirectoryName(mass_output[0]));
         massing = true;
     }
 }
