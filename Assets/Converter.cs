@@ -485,6 +485,26 @@ public class Converter : MonoBehaviour
 		DS3BoneRotSameAsReference(ds3_skeleton, 76); // the L and R Po are messed up
 		DS3BoneRotSameAsReference(ds3_skeleton, 107);
 
+		//try to move master down
+		SCA.TransformTrack master = ds3_skeleton.animation[0];
+		SCA.TransformTrack rootpos = ds3_skeleton.animation[7];
+
+
+		DS3ChangeBone(0, (SCA.TransformTrack tr) =>
+		{
+			rootpos.HasSplinePosition = master.HasSplinePosition;
+			rootpos.Mask.PositionQuantizationType = master.Mask.PositionQuantizationType;
+			rootpos.Mask.PositionTypes = master.Mask.PositionTypes;
+			rootpos.SplinePosition = master.SplinePosition;
+			rootpos.StaticPosition = master.StaticPosition;
+			master.HasSplinePosition = false;
+			master.StaticPosition = new Vector3(0, 0, 0);
+			master.SplinePosition = null;
+			master.Mask.PositionTypes = new List<SCA.FlagOffset>() { SCA.FlagOffset.StaticX, SCA.FlagOffset.StaticY, SCA.FlagOffset.StaticZ };
+		});
+
+		ds3_skeleton.ApplyReferencePose();
+
 		//the pectorals are messed up
 		foreach (var i in new List<int>() { 75, 106 })
 		{
