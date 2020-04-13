@@ -663,7 +663,8 @@ public class Converter : MonoBehaviour
 		DS3BoneRotQ(79, DQuaternion.Euler(new Vector3(0, 20, 0)));// rotate R Clavicle
 		DS3BoneMov(48, new Vector3(0, 0, -0.085f)); // rotate L clavicle
 		DS3BoneMov(79, new Vector3(0, 0, -0.085f)); // rotate R Clavicle
-
+		DS3BoneRotQ(39, DQuaternion.Euler(new Vector3(-90, -90, 0)));
+	
 		//DS3BoneRotQ(39, new DQuaternion(1, 0 , 1, 0) * new DQuaternion(1, 0, 0, 1)); // rotate rootroty
 		//DS3BoneRotQ(40, DQuaternion.Euler(new Vector3(-90, -90, 0))); // rotate rootroty
 
