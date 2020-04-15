@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Security.Cryptography;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Linq;
@@ -478,6 +479,13 @@ public class Converter : MonoBehaviour
 		DS3BoneFlipZRot(72); //L weapons are backwards
 		DS3BoneFlipZRot(102); //R weapons are backwards
 		DS3BoneFlipZRot(103); //R weapons are backwards
+		float weaponZRot = 17.0f;
+		DS3BoneRotQ(71, DQuaternion.Euler(new Vector3(3, 0, weaponZRot)));
+		DS3BoneRotQ(72, DQuaternion.Euler(new Vector3(3, 0, weaponZRot)));
+		DS3BoneRotQ(102, DQuaternion.Euler(new Vector3(3, 0, weaponZRot)));
+		DS3BoneRotQ(103, DQuaternion.Euler(new Vector3(3, 0, weaponZRot)));
+
+
 		DS3BonePosSameAsReference(ds3_skeleton, 54); // There is a weird bone that on the L forearm which is a child of a different object
 		DS3BoneRotSameAsReference(ds3_skeleton, 54);
 		DS3BonePosSameAsReference(ds3_skeleton, 85); // There is a weird bone that on the R forearm which is a child of a different object
@@ -609,16 +617,35 @@ public class Converter : MonoBehaviour
 		}
 		
 		//feet are stubby
-		foreach (var i in new List<int>() { 17, 32 })
+		foreach (var i in new List<int>() { 16, 31 })
 		{
 			SCA.TransformTrack tr = ds3_skeleton.animation[i];
 
 			if(tr.SplinePosition != null)
 			{
-				tr.SplinePosition.ChannelZ.Values = (from z in tr.SplinePosition.ChannelZ.Values select z + 0.03f).ToList();
+				tr.SplinePosition.ChannelX.Values = (from x in tr.SplinePosition.ChannelX.Values select x + 0.02f).ToList();
+				tr.SplinePosition.ChannelZ.Values = (from z in tr.SplinePosition.ChannelZ.Values select z - 0.04f).ToList();
+				tr.SplinePosition.BoundsXMax = tr.SplinePosition.ChannelX.Values.Max();
+				tr.SplinePosition.BoundsXMin = tr.SplinePosition.ChannelX.Values.Min();
+				tr.SplinePosition.BoundsZMax = tr.SplinePosition.ChannelZ.Values.Max();
+				tr.SplinePosition.BoundsZMin = tr.SplinePosition.ChannelZ.Values.Min();
 			} else
 			{
-				tr.StaticPosition.z += 0.03f;
+				tr.StaticPosition.z -= 0.04f;
+				tr.StaticPosition.x += 0.02f;
+			}
+			DQuaternion rotQuat = DQuaternion.Euler(new Vector3(0, -8, 0));
+			if (tr.SplineRotation != null)
+			{
+				tr.SplineRotation = new SCA.SplineTrackQuaternion(
+					(from q in tr.SplineRotation.Channel.Values select q * rotQuat).ToList(),
+					tr.SplineRotation.Knots,
+					tr.SplineRotation.Degree
+				);
+			}
+			else
+			{
+				tr.StaticRotation = tr.StaticRotation * rotQuat;
 			}
 		}
 
@@ -659,30 +686,14 @@ public class Converter : MonoBehaviour
 		//Specific Rotations
 		DS3BoneRotQ(7, new DQuaternion(0, -1, 0, 1)); // rotate rootpos
 		DS3BoneRotQ(8, DQuaternion.Euler(new Vector3(0,0,180)));// rotate pelvis
+		DS3BoneRotQ(39, DQuaternion.Euler(new Vector3(-90, -90, 0))); // rotate rootRotY
+		DS3BoneRotQ(40, DQuaternion.Euler(new Vector3(-90,-90,0)));// rotate rootRotXZ
 		DS3BoneRotQ(48, DQuaternion.Euler(new Vector3(0, 20, 0))); // rotate L clavicle
 		DS3BoneRotQ(79, DQuaternion.Euler(new Vector3(0, 20, 0)));// rotate R Clavicle
-		DS3BoneMov(48, new Vector3(0, 0, -0.085f)); // rotate L clavicle
-		DS3BoneMov(79, new Vector3(0, 0, -0.085f)); // rotate R Clavicle
-		DS3BoneRotQ(39, DQuaternion.Euler(new Vector3(-90, -90, 0)));
-	
-		//DS3BoneRotQ(39, new DQuaternion(1, 0 , 1, 0) * new DQuaternion(1, 0, 0, 1)); // rotate rootroty
-		//DS3BoneRotQ(40, DQuaternion.Euler(new Vector3(-90, -90, 0))); // rotate rootroty
+		DS3BoneMov(48, new Vector3(0, 0, -0.085f)); // move L clavicle
+		DS3BoneMov(79, new Vector3(0, 0, -0.085f)); // move R Clavicle
+		DS3BoneMov(41, new Vector3(0, 0.093f, 0)); // move spine1
 
-		//testttt
-		//var l = ds3_skeleton.animation.ToList();
-		//l.Add(new SCA.TransformTrack());
-		//{
-		//	var rootPos = ds3_skeleton.animation[7];
-		//	l.Last().Mask = rootPos.Mask;
-		//	l.Last().HasSplinePosition = rootPos.HasSplinePosition;
-		//	l.Last().HasSplineRotation = rootPos.HasSplineRotation;
-		//	l.Last().HasSplineScale = rootPos.HasSplineScale;
-		//	l.Last().HasStaticRotation = rootPos.HasStaticRotation;
-		//	l.Last().StaticPosition = rootPos.StaticPosition;
-		//	l.Last().StaticRotation = rootPos.StaticRotation;
-		//	l.Last().StaticScale = rootPos.StaticScale;
-		//}
-		//ds3_skeleton.animation = l.ToArray();
 
 		ds3_skeleton.ApplyAnimationPose(0);
 	}
@@ -922,21 +933,25 @@ public class Converter : MonoBehaviour
 		}
 
 		List<byte> dat = SCA.CompressAnimation(false, new List<SCA.TransformTrack[]>() { s.animation });
+
+
+
 		(from item in xSCA.Elements() where item.Attribute("name").Value == "floatBlockOffsets" select item).First().Value = dat.Count.ToString();
 		XElement xcData = (from item in xSCA.Elements() where item.Attribute("name").Value == "data" select item).First();
 		xcData.Attribute("numelements").Value = dat.Count.ToString();
-		xcData.Value = "\n";
+		StringBuilder xcVal = new StringBuilder("\n");
 		for(int i = 0; i < dat.Count; i++)
 		{
-			xcData.Value += dat[i].ToString();
+			xcVal.Append(dat[i].ToString());
 			if(i % 16 == 15)
 			{
-				xcData.Value += "\n";
+				xcVal.Append("\n");
 			} else
 			{
-				xcData.Value += " ";
+				xcVal.Append(" ");
 			}
 		}
+		xcData.Value = xcVal.ToString();
 
 		XElement xAB = (from item in data.Elements() where item.Attribute("class").Value == "hkaAnimationBinding" select item).First();
 		XElement tttbi = (from item in xAB.Elements() where item.Attribute("name").Value == "transformTrackToBoneIndices" select item).First();
@@ -1003,6 +1018,14 @@ public class Converter : MonoBehaviour
 			SaveDS3AnimationToXML("","Assets/mass_input/output/" + f.Name);
 		}
 		Debug.Log("Done Converting :)");
+	}
+
+	public void DebugTime(Action act)
+	{
+		var watch = System.Diagnostics.Stopwatch.StartNew();
+		act();
+		watch.Stop();
+		Debug.Log((float)watch.ElapsedMilliseconds / 1000.0f);
 	}
 }
 
