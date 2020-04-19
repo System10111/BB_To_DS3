@@ -703,9 +703,12 @@ public class Converter : MonoBehaviour
 		var track = ds3_skeleton.animation[boneId];
 		if (track.SplinePosition != null)
 		{
-			track.SplinePosition.ChannelX.Values = (from x in track.SplinePosition.ChannelX.Values select s.referencePose[boneId].p.x).ToList();
-			track.SplinePosition.ChannelY.Values = (from y in track.SplinePosition.ChannelY.Values select s.referencePose[boneId].p.y).ToList();
-			track.SplinePosition.ChannelZ.Values = (from z in track.SplinePosition.ChannelZ.Values select s.referencePose[boneId].p.z).ToList();
+			if(track.SplinePosition.ChannelX != null)
+				track.SplinePosition.ChannelX.Values = (from x in track.SplinePosition.ChannelX.Values select s.referencePose[boneId].p.x).ToList();
+			if (track.SplinePosition.ChannelY != null)
+				track.SplinePosition.ChannelY.Values = (from y in track.SplinePosition.ChannelY.Values select s.referencePose[boneId].p.y).ToList();
+			if (track.SplinePosition.ChannelZ != null)
+				track.SplinePosition.ChannelZ.Values = (from z in track.SplinePosition.ChannelZ.Values select s.referencePose[boneId].p.z).ToList();
 		}
 		else
 		{
