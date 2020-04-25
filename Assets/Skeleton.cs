@@ -1,16 +1,20 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.XR;
 
 public class Skeleton : MonoBehaviour
 {
-	// Start is called before the first frame update
+	//There was a field called animation, after removing it unity kept changing animation to GetComponent<Animation>() and I couldn't find where to refactor
+	public new int animation; //This prevents unity from changing animation to GetComponent<Animation>()
 	public List<int> parentIndices = new List<int>();
 	public List<GameObject> bones = new List<GameObject>();
 	public List<(Vector3 s, Quaternion r, Vector3 p)> referencePose = new List<(Vector3 s, Quaternion r, Vector3 p)>();
-	public new SCA.TransformTrack[] animation = new SCA.TransformTrack[0];
+	public List<SCA.TransformTrack[]> animation_blocks = new List<SCA.TransformTrack[]>();
+
 	public int animationFrames = 0;
 	void Start()
 	{
@@ -33,8 +37,12 @@ public class Skeleton : MonoBehaviour
 		}
 	}
 
-	public void ApplyAnimationPose(int frame, bool withDegree = true)
+	public void ApplyAnimationPose(int frame)
 	{
+		if (frame > animationFrames) return;
+		var animation = animation_blocks[(int)frame / 256];
+		frame = frame % 256;
+
 		if (animation.Length == 0) return;
 		for (int i = 0; i < bones.Count; i++)
 		{
@@ -42,9 +50,9 @@ public class Skeleton : MonoBehaviour
 			Vector3 FinScale = Vector3.one;
 			if (animation[i].SplineScale != null)
 			{
-				FinScale.x *= animation[i].SplineScale.GetValueX((float)frame, withDegree) ?? 1;
-				FinScale.y *= animation[i].SplineScale.GetValueY((float)frame, withDegree) ?? 1;
-				FinScale.z *= animation[i].SplineScale.GetValueZ((float)frame, withDegree) ?? 1;
+				FinScale.x *= animation[i].SplineScale.GetValueX((float)frame) ?? 1;
+				FinScale.y *= animation[i].SplineScale.GetValueY((float)frame) ?? 1;
+				FinScale.z *= animation[i].SplineScale.GetValueZ((float)frame) ?? 1;
 			} else
 			{
 				if (animation[i].Mask.ScaleTypes.Contains(SCA.FlagOffset.StaticX))
@@ -58,7 +66,7 @@ public class Skeleton : MonoBehaviour
 			Quaternion FinRot = Quaternion.identity;
 			if (animation[i].SplineRotation != null)//track.HasSplineRotation)
 			{
-				FinRot = animation[i].SplineRotation.GetValue(frame, withDegree).ToQ();
+				FinRot = animation[i].SplineRotation.GetValue(frame).ToQ();
 			}
 			else if (animation[i].HasStaticRotation)
 			{
@@ -76,9 +84,9 @@ public class Skeleton : MonoBehaviour
 			Vector3 FinPos = Vector3.zero;
 			if (animation[i].SplinePosition != null)
 			{
-				FinPos.x += animation[i].SplinePosition.GetValueX((float)frame, withDegree) ?? 0;
-				FinPos.y += animation[i].SplinePosition.GetValueY((float)frame, withDegree) ?? 0;
-				FinPos.z += animation[i].SplinePosition.GetValueZ((float)frame, withDegree) ?? 0;
+				FinPos.x += animation[i].SplinePosition.GetValueX((float)frame) ?? 0;
+				FinPos.y += animation[i].SplinePosition.GetValueY((float)frame) ?? 0;
+				FinPos.z += animation[i].SplinePosition.GetValueZ((float)frame) ?? 0;
 			}
 			else
 			{
@@ -110,6 +118,30 @@ public class Skeleton : MonoBehaviour
 			bones[i].transform.localRotation = FinRot;
 			bones[i].transform.localPosition = FinPos;
 		}
+	}
+
+	public List<List<(Vector3 pos, Quaternion rot, Vector3 Scale)>> GetFrameAnimation()
+	{
+		List<List<(Vector3 pos, Quaternion rot, Vector3 Scale)>> output = new List<List<(Vector3 pos, Quaternion rot, Vector3 Scale)>>();
+		for(int i = 0; i < bones.Count;i++)
+		{
+			output.Add(new List<(Vector3 pos, Quaternion rot, Vector3 Scale)>());
+		}
+
+		for(int i = 0; i < animationFrames; i++)
+		{
+			ApplyAnimationPose(i);
+			for (int j = 0; j < bones.Count; j++)
+			{
+				output[j].Add(
+					(bones[j].transform.localPosition,
+					bones[j].transform.localRotation,
+					bones[j].transform.localScale
+					)
+				);
+			}
+		}
+		return output;
 	}
 }
 

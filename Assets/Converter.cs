@@ -307,7 +307,7 @@ public class Converter : MonoBehaviour
 		ds3_skeleton.gameObject.name = "DS3_Skeleton";
 	}
 
-	public void SetBBAnimation(string xmlFile)
+	public void SetBBAnimation(string xmlFile, List<(float x, float y, float z, float w)> referenceFrame = null)
 	{
 		XElement xml;
 		if(xmlFile == "")
@@ -320,15 +320,50 @@ public class Converter : MonoBehaviour
 		XElement data = (from item in xml.Elements() where item.Attribute("name").Value == "__data__" select item).First();
 		XElement xSCA = (from item in data.Elements() where item.Attribute("class").Value == "hkaSplineCompressedAnimation" select item).First();
 
+
+		int numBlocks = int.Parse((from item in xSCA.Elements() where item.Attribute("name").Value == "numBlocks" select item).First().Value);
 		int numTransTracks = int.Parse((from item in xSCA.Elements() where item.Attribute("name").Value == "numberOfTransformTracks" select item).First().Value);
 		int frames = int.Parse((from item in xSCA.Elements() where item.Attribute("name").Value == "numFrames" select item).First().Value);
+
+		if(referenceFrame != null)
+		{
+			float addx = 0;
+			float addy = 0;
+			float addz = 0;
+			float addw = 0;
+			if(referenceFrame.Count > 0)
+			{
+				addx = referenceFrame.Last().x;
+				addy = referenceFrame.Last().y;
+				addz = referenceFrame.Last().z;
+				addw = referenceFrame.Last().w;
+			}
+			var els = (from item in data.Elements() where item.Attribute("class").Value == "hkaDefaultAnimatedReferenceFrame" select item);
+			if(els.Count() == 0)
+			{
+				for(int i = 0; i < frames; i++)
+				{
+					referenceFrame.Add((0.0f + addx, 0.0f + addy, 0.0f + addz, 0.0f + addw));
+				}
+			} else
+			{
+				XElement xDARF = els.First();
+				string[] refFrame = (from item in xDARF.Elements() where item.Attribute("name").Value == "referenceFrameSamples" select item).First().Value.Split('(');
+				refFrame = (from s in refFrame where s.Contains(')') select s.Split(')')[0]).ToArray();
+				foreach (var s in refFrame)
+				{
+					float[] vals = (from f in s.Split(new char[0], System.StringSplitOptions.RemoveEmptyEntries) select float.Parse(f)).ToArray();
+					referenceFrame.Add((vals[0] + addx, vals[1] + addy, vals[2] + addz, vals[3] + addw));
+				}
+			}
+		}
 
 		byte[] dataVals = 
 			(from v in 
 				(from item in xSCA.Elements() where item.Attribute("name").Value == "data" select item)
 			.First().Value.Split(new char[0], System.StringSplitOptions.RemoveEmptyEntries) select byte.Parse(v)).ToArray();
 
-		bb_skeleton.animation = SCA.ReadSplineCompressedAnimByteBlock(false, dataVals, numTransTracks, 1)[0];
+		bb_skeleton.animation_blocks = SCA.ReadSplineCompressedAnimByteBlock(false, dataVals, numTransTracks, numBlocks);
 		bb_skeleton.animationFrames = frames;
 
 		bb_skeleton.ApplyAnimationPose(0);
@@ -339,55 +374,37 @@ public class Converter : MonoBehaviour
 		ds3_skeleton.ApplyReferencePose();
 		ds3_skeleton.transform.position = bb_skeleton.transform.position;
 		ds3_skeleton.animationFrames = bb_skeleton.animationFrames;
-		ds3_skeleton.animation = new SCA.TransformTrack[ds3_skeleton.bones.Count];
+		//ds3_skeleton.animation_blocks = new SCA.TransformTrack[ds3_skeleton.bones.Count];
 		List<int> feetTargets = new List<int>() { 1, 2, 3, 4, 5, 6 };
-		//List<int> feetTargets = new List<int>() { };
-		for (int i = 0; i < ds3_skeleton.bones.Count; i++)
+		ds3_skeleton.animation_blocks = new List<SCA.TransformTrack[]>(bb_skeleton.animation_blocks.Count);
+		for (int j = 0; j < bb_skeleton.animation_blocks.Count; j++)
 		{
-			//we want to handle feet targets ourselves
-			if (feetTargets.Contains(i)) continue;
-			//copy most of bloodborne's bones depending on the relation
-			ds3_skeleton.animation[i] = bb_skeleton.animation[bone_relations[i]].Clone();
+			ds3_skeleton.animation_blocks.Add(new SCA.TransformTrack[ds3_skeleton.bones.Count]);
+			//List<int> feetTargets = new List<int>() { };
 
-			//bloodborne character is bigger
-			//but trying to fix it messes up the animation
-			//SCA.SplineTrackVector3 sp = ds3_skeleton.animation[i].SplinePosition;
-			//if (sp != null)
-			//{
-			//	if(sp.ChannelX != null)
-			//	{
-			//		sp.ChannelX.Values = (from x in sp.ChannelX.Values select x * scale_factor).ToList();
-			//		sp.BoundsXMax = sp.ChannelX.Values.Max();
-			//		sp.BoundsXMax = sp.ChannelX.Values.Min();
-			//	}
-			//	if(sp.ChannelY != null)
-			//	{
-			//		sp.ChannelY.Values = (from y in sp.ChannelY.Values select y * scale_factor).ToList();
-			//		sp.BoundsYMax = sp.ChannelY.Values.Max();
-			//		sp.BoundsYMax = sp.ChannelY.Values.Min();
-			//	}
-			//	if(sp.ChannelZ != null)
-			//	{
-			//		sp.ChannelZ.Values = (from z in sp.ChannelZ.Values select z * scale_factor).ToList();
-			//		sp.BoundsZMax = sp.ChannelZ.Values.Max();
-			//		sp.BoundsZMax = sp.ChannelZ.Values.Min();
-			//	}
-			//}
-			//else
-			//{
-			//	ds3_skeleton.animation[i].StaticPosition *= scale_factor;
-			//}
+			for (int i = 0; i < ds3_skeleton.bones.Count; i++)
+			{
+				//we want to handle feet targets ourselves
+				if (feetTargets.Contains(i)) continue;
+				//copy most of bloodborne's bones depending on the relation
+				ds3_skeleton.animation_blocks[j][i] = bb_skeleton.animation_blocks[j][bone_relations[i]].Clone();
+
+				//bloodborne character is bigger
+				//but trying to fix it messes up the animation
+			}
 		}
-		foreach(var it in feetTargets)
+
+		for (int j = 0; j < ds3_skeleton.animation_blocks.Count; j++)
+		foreach (var it in feetTargets)
 		{
-			ds3_skeleton.animation[it] = new SCA.TransformTrack();
-			SCA.TransformTrack tr = ds3_skeleton.animation[it];
+			ds3_skeleton.animation_blocks[j][it] = new SCA.TransformTrack();
+			SCA.TransformTrack tr = ds3_skeleton.animation_blocks[j][it];
 			tr.Mask = new SCA.TransformMask();
 
 			//top targets get moved
 			if (it == 1 || it == 4)
 			{
-				var bbt = bb_skeleton.animation[bone_relations[it]];
+				var bbt = bb_skeleton.animation_blocks[j][bone_relations[it]];
 				tr.HasSplinePosition = bbt.HasSplinePosition;
 				tr.Mask.PositionTypes = bbt.Mask.PositionTypes;
 				tr.Mask.PositionQuantizationType = bbt.Mask.PositionQuantizationType;
@@ -412,7 +429,7 @@ public class Converter : MonoBehaviour
 			//bottom targets get bb's rotation
 			else if (it == 3 || it == 6)
 			{
-				var bbt = bb_skeleton.animation[bone_relations[it]];
+				var bbt = bb_skeleton.animation_blocks[j][bone_relations[it]];
 				tr.HasSplineRotation = bbt.HasSplineRotation;
 				tr.HasStaticRotation = bbt.HasStaticRotation;
 				tr.Mask.RotationTypes = bbt.Mask.RotationTypes;
@@ -467,7 +484,6 @@ public class Converter : MonoBehaviour
 			}
 		}
 
-
 		//DS3BoneRotSameAsReference(ds3_skeleton, 20); // Skirt is messed up
 		//DS3BoneRotSameAsReference(ds3_skeleton, 35); // 
 		//ds3_skeleton.animation[20].StaticRotation = DQuaternion.Euler(new Vector3(0,0,180)); 
@@ -485,204 +501,210 @@ public class Converter : MonoBehaviour
 		DS3BoneRotQ(102, DQuaternion.Euler(new Vector3(3, 0, weaponZRot)));
 		DS3BoneRotQ(103, DQuaternion.Euler(new Vector3(3, 0, weaponZRot)));
 
-
+		
 		DS3BonePosSameAsReference(ds3_skeleton, 54); // There is a weird bone that on the L forearm which is a child of a different object
 		DS3BoneRotSameAsReference(ds3_skeleton, 54);
 		DS3BonePosSameAsReference(ds3_skeleton, 85); // There is a weird bone that on the R forearm which is a child of a different object
 		DS3BoneRotSameAsReference(ds3_skeleton, 85);
 		DS3BoneRotSameAsReference(ds3_skeleton, 76); // the L and R Po are messed up
 		DS3BoneRotSameAsReference(ds3_skeleton, 107);
-
-		//try to move master down
-		SCA.TransformTrack master = ds3_skeleton.animation[0];
-		SCA.TransformTrack rootpos = ds3_skeleton.animation[7];
-
-
-		DS3ChangeBone(0, (SCA.TransformTrack tr) =>
-		{
-			rootpos.HasSplinePosition = master.HasSplinePosition;
-			rootpos.Mask.PositionQuantizationType = master.Mask.PositionQuantizationType;
-			rootpos.Mask.PositionTypes = master.Mask.PositionTypes;
-			rootpos.SplinePosition = master.SplinePosition;
-			rootpos.StaticPosition = master.StaticPosition;
-			master.HasSplinePosition = false;
-			master.StaticPosition = new Vector3(0, 0, 0);
-			master.SplinePosition = null;
-			master.Mask.PositionTypes = new List<SCA.FlagOffset>() { SCA.FlagOffset.StaticX, SCA.FlagOffset.StaticY, SCA.FlagOffset.StaticZ };
-		});
-
-		ds3_skeleton.ApplyReferencePose();
-
-		//the pectorals are messed up
-		foreach (var i in new List<int>() { 75, 106 })
-		{
-			var tr = new SCA.TransformTrack();
-			SCA.TransformTrack otr = ds3_skeleton.animation[i];
-			tr.HasSplinePosition = otr.HasSplinePosition;
-			tr.Mask = new SCA.TransformMask();
-			tr.Mask.PositionTypes = otr.Mask.PositionTypes;
-			tr.Mask.PositionQuantizationType = otr.Mask.PositionQuantizationType;
-			tr.StaticPosition = otr.StaticPosition;
-			tr.SplinePosition = otr.SplinePosition;
-			tr.HasSplineRotation = otr.HasSplineRotation;
-			tr.HasStaticRotation = otr.HasStaticRotation;
-			tr.Mask.RotationTypes = otr.Mask.RotationTypes;
-			tr.Mask.RotationQuantizationType = otr.Mask.RotationQuantizationType;
-			tr.StaticRotation = otr.StaticRotation;
-			tr.SplineRotation = otr.SplineRotation;
-			tr.HasSplineScale = otr.HasSplineScale;
-			tr.Mask.ScaleTypes = otr.Mask.ScaleTypes;
-			tr.Mask.ScaleQuantizationType = otr.Mask.ScaleQuantizationType;
-			tr.StaticScale = otr.StaticScale;
-			tr.SplineScale = otr.SplineScale;
-
-			ds3_skeleton.animation[i] = tr;
-			if (tr.SplinePosition != null)
-			{
-				tr.SplinePosition = new SCA.SplineTrackVector3(
-					(from x in tr.SplinePosition.ChannelX.Values select x - 0.02f).ToList(),
-					tr.SplinePosition.ChannelY.Values,
-					tr.SplinePosition.ChannelZ.Values,
-					tr.SplinePosition.Knots,
-					tr.SplinePosition.Degree
-				);
-			}
-			else
-			{
-				tr.StaticPosition.x -= 0.02f;
-			}
-		}
-		// R_Pectoral is rotated
-		DQuaternion R_PecRot = DQuaternion.Euler(new Vector3(180, 0 , 0));
-		{
-			SCA.TransformTrack tr = ds3_skeleton.animation[106];
-			if (tr.SplineRotation != null)
-			{
-				tr.SplineRotation = new SCA.SplineTrackQuaternion(
-					(from q in tr.SplineRotation.Channel.Values select q * R_PecRot).ToList(),
-					tr.SplineRotation.Knots,
-					tr.SplineRotation.Degree
-				);
-			} else
-			{
-				tr.StaticRotation = tr.StaticRotation * R_PecRot;
-			}
-		}
-		//the spine armor is messed up
-		foreach (var i in new List<int>() { 108, 109 })
-		{
-			var tr = new SCA.TransformTrack();
-			SCA.TransformTrack otr = ds3_skeleton.animation[i];
-			tr.HasSplinePosition = otr.HasSplinePosition;
-			tr.Mask = new SCA.TransformMask();
-			tr.Mask.PositionTypes = otr.Mask.PositionTypes;
-			tr.Mask.PositionQuantizationType = otr.Mask.PositionQuantizationType;
-			tr.StaticPosition = otr.StaticPosition;
-			tr.SplinePosition = otr.SplinePosition;
-			tr.HasSplineRotation = otr.HasSplineRotation;
-			tr.HasStaticRotation = otr.HasStaticRotation;
-			tr.Mask.RotationTypes = otr.Mask.RotationTypes;
-			tr.Mask.RotationQuantizationType = otr.Mask.RotationQuantizationType;
-			tr.StaticRotation = otr.StaticRotation;
-			tr.SplineRotation = otr.SplineRotation;
-			tr.HasSplineScale = otr.HasSplineScale;
-			tr.Mask.ScaleTypes = otr.Mask.ScaleTypes;
-			tr.Mask.ScaleQuantizationType = otr.Mask.ScaleQuantizationType;
-			tr.StaticScale = otr.StaticScale;
-			tr.SplineScale = otr.SplineScale;
-
-			if (tr.SplinePosition != null && tr.SplinePosition.ChannelX?.Values != null)
-			{
-				tr.HasSplinePosition = true;
-				tr.Mask.PositionTypes = new List<SCA.FlagOffset>(tr.Mask.PositionTypes);
-				tr.Mask.PositionTypes.Add(SCA.FlagOffset.SplineX);
-				var xs = (from x in tr.SplinePosition.ChannelX.Values select x + 0.13f).ToList();
-				var ys = tr.SplinePosition.ChannelY?.Values;
-				var zs = tr.SplinePosition.ChannelZ?.Values;
-				tr.SplinePosition = new SCA.SplineTrackVector3(
-					xs,
-					ys,
-					zs,
-					tr.SplinePosition.Knots,
-					tr.SplinePosition.Degree
-				);
-				tr.SplinePosition.BoundsXMax = xs.Max();
-				tr.SplinePosition.BoundsXMin = xs.Min();
-			}
-			else
-			{
-				tr.StaticPosition.x += 0.13f;
-			}
-			ds3_skeleton.animation[i] = tr;
-		}
 		
-		//feet are stubby
-		foreach (var i in new List<int>() { 16, 31 })
+		for (int j = 0; j < ds3_skeleton.animation_blocks.Count; j++)
 		{
-			SCA.TransformTrack tr = ds3_skeleton.animation[i];
+			
+			//try to move master down
+			SCA.TransformTrack master = ds3_skeleton.animation_blocks[j][0];
+			SCA.TransformTrack rootpos = ds3_skeleton.animation_blocks[j][7];
 
-			if(tr.SplinePosition != null)
+			DS3ChangeBone(0, (SCA.TransformTrack tr) =>
 			{
-				tr.SplinePosition.ChannelX.Values = (from x in tr.SplinePosition.ChannelX.Values select x + 0.02f).ToList();
-				tr.SplinePosition.ChannelZ.Values = (from z in tr.SplinePosition.ChannelZ.Values select z - 0.04f).ToList();
-				tr.SplinePosition.BoundsXMax = tr.SplinePosition.ChannelX.Values.Max();
-				tr.SplinePosition.BoundsXMin = tr.SplinePosition.ChannelX.Values.Min();
-				tr.SplinePosition.BoundsZMax = tr.SplinePosition.ChannelZ.Values.Max();
-				tr.SplinePosition.BoundsZMin = tr.SplinePosition.ChannelZ.Values.Min();
-			} else
+				rootpos.HasSplinePosition = master.HasSplinePosition;
+				rootpos.Mask.PositionQuantizationType = master.Mask.PositionQuantizationType;
+				rootpos.Mask.PositionTypes = master.Mask.PositionTypes;
+				rootpos.SplinePosition = master.SplinePosition;
+				rootpos.StaticPosition = master.StaticPosition;
+				master.HasSplinePosition = false;
+				master.StaticPosition = new Vector3(0, 0, 0);
+				master.SplinePosition = null;
+				master.Mask.PositionTypes = new List<SCA.FlagOffset>() { SCA.FlagOffset.StaticX, SCA.FlagOffset.StaticY, SCA.FlagOffset.StaticZ };
+			}, null, j);
+
+			ds3_skeleton.ApplyReferencePose();
+
+			//the pectorals are messed up
+			foreach (var i in new List<int>() { 75, 106 })
 			{
-				tr.StaticPosition.z -= 0.04f;
-				tr.StaticPosition.x += 0.02f;
+				var tr = new SCA.TransformTrack();
+				SCA.TransformTrack otr = ds3_skeleton.animation_blocks[j][i];
+				tr.HasSplinePosition = otr.HasSplinePosition;
+				tr.Mask = new SCA.TransformMask();
+				tr.Mask.PositionTypes = otr.Mask.PositionTypes;
+				tr.Mask.PositionQuantizationType = otr.Mask.PositionQuantizationType;
+				tr.StaticPosition = otr.StaticPosition;
+				tr.SplinePosition = otr.SplinePosition;
+				tr.HasSplineRotation = otr.HasSplineRotation;
+				tr.HasStaticRotation = otr.HasStaticRotation;
+				tr.Mask.RotationTypes = otr.Mask.RotationTypes;
+				tr.Mask.RotationQuantizationType = otr.Mask.RotationQuantizationType;
+				tr.StaticRotation = otr.StaticRotation;
+				tr.SplineRotation = otr.SplineRotation;
+				tr.HasSplineScale = otr.HasSplineScale;
+				tr.Mask.ScaleTypes = otr.Mask.ScaleTypes;
+				tr.Mask.ScaleQuantizationType = otr.Mask.ScaleQuantizationType;
+				tr.StaticScale = otr.StaticScale;
+				tr.SplineScale = otr.SplineScale;
+
+				ds3_skeleton.animation_blocks[j][i] = tr;
+				if (tr.SplinePosition != null)
+				{
+					tr.SplinePosition = new SCA.SplineTrackVector3(
+						(from x in tr.SplinePosition.ChannelX.Values select x - 0.02f).ToList(),
+						tr.SplinePosition.ChannelY.Values,
+						tr.SplinePosition.ChannelZ.Values,
+						tr.SplinePosition.Knots,
+						tr.SplinePosition.Degree
+					);
+				}
+				else
+				{
+					tr.StaticPosition.x -= 0.02f;
+				}
 			}
-			DQuaternion rotQuat = DQuaternion.Euler(new Vector3(0, -8, 0));
-			if (tr.SplineRotation != null)
+			
+			// R_Pectoral is rotated
+			DQuaternion R_PecRot = DQuaternion.Euler(new Vector3(180, 0, 0));
 			{
-				tr.SplineRotation = new SCA.SplineTrackQuaternion(
-					(from q in tr.SplineRotation.Channel.Values select q * rotQuat).ToList(),
-					tr.SplineRotation.Knots,
-					tr.SplineRotation.Degree
-				);
+				SCA.TransformTrack tr = ds3_skeleton.animation_blocks[j][106];
+				if (tr.SplineRotation != null)
+				{
+					tr.SplineRotation = new SCA.SplineTrackQuaternion(
+						(from q in tr.SplineRotation.Channel.Values select q * R_PecRot).ToList(),
+						tr.SplineRotation.Knots,
+						tr.SplineRotation.Degree
+					);
+				}
+				else
+				{
+					tr.StaticRotation = tr.StaticRotation * R_PecRot;
+				}
+			}
+			//the spine armor is messed up
+			foreach (var i in new List<int>() { 108, 109 })
+			{
+				var tr = new SCA.TransformTrack();
+				SCA.TransformTrack otr = ds3_skeleton.animation_blocks[j][i];
+				tr.HasSplinePosition = otr.HasSplinePosition;
+				tr.Mask = new SCA.TransformMask();
+				tr.Mask.PositionTypes = otr.Mask.PositionTypes;
+				tr.Mask.PositionQuantizationType = otr.Mask.PositionQuantizationType;
+				tr.StaticPosition = otr.StaticPosition;
+				tr.SplinePosition = otr.SplinePosition;
+				tr.HasSplineRotation = otr.HasSplineRotation;
+				tr.HasStaticRotation = otr.HasStaticRotation;
+				tr.Mask.RotationTypes = otr.Mask.RotationTypes;
+				tr.Mask.RotationQuantizationType = otr.Mask.RotationQuantizationType;
+				tr.StaticRotation = otr.StaticRotation;
+				tr.SplineRotation = otr.SplineRotation;
+				tr.HasSplineScale = otr.HasSplineScale;
+				tr.Mask.ScaleTypes = otr.Mask.ScaleTypes;
+				tr.Mask.ScaleQuantizationType = otr.Mask.ScaleQuantizationType;
+				tr.StaticScale = otr.StaticScale;
+				tr.SplineScale = otr.SplineScale;
+
+				if (tr.SplinePosition != null && tr.SplinePosition.ChannelX?.Values != null)
+				{
+					tr.HasSplinePosition = true;
+					tr.Mask.PositionTypes = new List<SCA.FlagOffset>(tr.Mask.PositionTypes);
+					tr.Mask.PositionTypes.Add(SCA.FlagOffset.SplineX);
+					var xs = (from x in tr.SplinePosition.ChannelX.Values select x + 0.13f).ToList();
+					var ys = tr.SplinePosition.ChannelY?.Values;
+					var zs = tr.SplinePosition.ChannelZ?.Values;
+					tr.SplinePosition = new SCA.SplineTrackVector3(
+						xs,
+						ys,
+						zs,
+						tr.SplinePosition.Knots,
+						tr.SplinePosition.Degree
+					);
+					tr.SplinePosition.BoundsXMax = xs.Max();
+					tr.SplinePosition.BoundsXMin = xs.Min();
+				}
+				else
+				{
+					tr.StaticPosition.x += 0.13f;
+				}
+				ds3_skeleton.animation_blocks[j][i] = tr;
+			}
+
+			//feet are stubby
+			foreach (var i in new List<int>() { 16, 31 })
+			{
+				SCA.TransformTrack tr = ds3_skeleton.animation_blocks[j][i];
+
+				if (tr.SplinePosition != null)
+				{
+					tr.SplinePosition.ChannelX.Values = (from x in tr.SplinePosition.ChannelX.Values select x + 0.02f).ToList();
+					tr.SplinePosition.ChannelZ.Values = (from z in tr.SplinePosition.ChannelZ.Values select z - 0.04f).ToList();
+					tr.SplinePosition.BoundsXMax = tr.SplinePosition.ChannelX.Values.Max();
+					tr.SplinePosition.BoundsXMin = tr.SplinePosition.ChannelX.Values.Min();
+					tr.SplinePosition.BoundsZMax = tr.SplinePosition.ChannelZ.Values.Max();
+					tr.SplinePosition.BoundsZMin = tr.SplinePosition.ChannelZ.Values.Min();
+				}
+				else
+				{
+					tr.StaticPosition.z -= 0.04f;
+					tr.StaticPosition.x += 0.02f;
+				}
+				DQuaternion rotQuat = DQuaternion.Euler(new Vector3(0, -8, 0));
+				if (tr.SplineRotation != null)
+				{
+					tr.SplineRotation = new SCA.SplineTrackQuaternion(
+						(from q in tr.SplineRotation.Channel.Values select q * rotQuat).ToList(),
+						tr.SplineRotation.Knots,
+						tr.SplineRotation.Degree
+					);
+				}
+				else
+				{
+					tr.StaticRotation = tr.StaticRotation * rotQuat;
+				}
+			}
+
+			//the head is a bit forward
+			float head_degree = 8.3f;
+			foreach (var i in new List<int>() { 77, 78 })
+			{
+				SCA.TransformTrack tr = ds3_skeleton.animation_blocks[j][i];
+				if (tr.SplineRotation != null)
+				{
+					tr.SplineRotation = new SCA.SplineTrackQuaternion(
+						(from q in tr.SplineRotation.Channel.Values select q * DQuaternion.Euler(new Vector3(0, head_degree, 0))).ToList(),
+						tr.SplineRotation.Knots,
+						tr.SplineRotation.Degree
+					);
+				}
+				else
+				{
+					tr.StaticRotation = tr.StaticRotation * DQuaternion.Euler(new Vector3(0, head_degree, 0));
+				}
+				head_degree *= -1;
+			}
+
+			var neck_t = ds3_skeleton.animation_blocks[j][77];
+			if (neck_t.SplinePosition != null)
+			{
+				neck_t.SplinePosition.ChannelZ.Values = (from z in neck_t.SplinePosition.ChannelZ.Values select z - 0.03f).ToList();
+				neck_t.SplinePosition.BoundsZMax = neck_t.SplinePosition.ChannelZ.Values.Max();
+				neck_t.SplinePosition.BoundsZMin = neck_t.SplinePosition.ChannelZ.Values.Min();
 			}
 			else
 			{
-				tr.StaticRotation = tr.StaticRotation * rotQuat;
+				neck_t.StaticPosition.z = neck_t.StaticPosition.z - 0.03f;
 			}
-		}
 
-		//the head is a bit forward
-		float head_degree = 8.3f;
-		foreach (var i in new List<int>() { 77, 78 })
-		{
-			SCA.TransformTrack tr = ds3_skeleton.animation[i];
-			if (tr.SplineRotation != null)
-			{
-				tr.SplineRotation = new SCA.SplineTrackQuaternion(
-					(from q in tr.SplineRotation.Channel.Values select q * DQuaternion.Euler(new Vector3(0, head_degree, 0))).ToList(),
-					tr.SplineRotation.Knots,
-					tr.SplineRotation.Degree
-				);
-			}
-			else
-			{
-				tr.StaticRotation = tr.StaticRotation * DQuaternion.Euler(new Vector3(0, head_degree, 0));
-			}
-			head_degree *= -1;
+			//collar can be same as neck
+			ds3_skeleton.animation_blocks[j][47] = ds3_skeleton.animation_blocks[j][77].Clone();
 		}
-
-		var neck_t = ds3_skeleton.animation[77];
-		if (neck_t.SplinePosition != null)
-		{
-			neck_t.SplinePosition.ChannelZ.Values = (from z in neck_t.SplinePosition.ChannelZ.Values select z - 0.03f).ToList();
-			neck_t.SplinePosition.BoundsZMax = neck_t.SplinePosition.ChannelZ.Values.Max();
-			neck_t.SplinePosition.BoundsZMin = neck_t.SplinePosition.ChannelZ.Values.Min();
-		}
-		else
-		{
-			neck_t.StaticPosition.z = neck_t.StaticPosition.z - 0.03f;
-		}
-
-		//collar can be same as neck
-		ds3_skeleton.animation[47] = ds3_skeleton.animation[77].Clone();
 		//Specific Rotations
 		DS3BoneRotQ(7, new DQuaternion(0, -1, 0, 1)); // rotate rootpos
 		DS3BoneRotQ(8, DQuaternion.Euler(new Vector3(0,0,180)));// rotate pelvis
@@ -694,155 +716,187 @@ public class Converter : MonoBehaviour
 		DS3BoneMov(79, new Vector3(0, 0, -0.085f)); // move R Clavicle
 		DS3BoneMov(41, new Vector3(0, 0.093f, 0)); // move spine1
 
-
 		ds3_skeleton.ApplyAnimationPose(0);
 	}
-
 	public void DS3BonePosSameAsReference(Skeleton s, int boneId)
 	{
-		var track = ds3_skeleton.animation[boneId];
-		if (track.SplinePosition != null)
+		for (int j = 0; j < ds3_skeleton.animation_blocks.Count; j++)
 		{
-			if(track.SplinePosition.ChannelX != null)
-				track.SplinePosition.ChannelX.Values = (from x in track.SplinePosition.ChannelX.Values select s.referencePose[boneId].p.x).ToList();
-			if (track.SplinePosition.ChannelY != null)
-				track.SplinePosition.ChannelY.Values = (from y in track.SplinePosition.ChannelY.Values select s.referencePose[boneId].p.y).ToList();
-			if (track.SplinePosition.ChannelZ != null)
-				track.SplinePosition.ChannelZ.Values = (from z in track.SplinePosition.ChannelZ.Values select s.referencePose[boneId].p.z).ToList();
-		}
-		else
-		{
-			track.StaticPosition = s.referencePose[boneId].p;
+			var track = s.animation_blocks[j][boneId];
+			if (track.SplinePosition != null)
+			{
+				if (track.SplinePosition.ChannelX != null)
+					track.SplinePosition.ChannelX.Values = (from x in track.SplinePosition.ChannelX.Values select s.referencePose[boneId].p.x).ToList();
+				if (track.SplinePosition.ChannelY != null)
+					track.SplinePosition.ChannelY.Values = (from y in track.SplinePosition.ChannelY.Values select s.referencePose[boneId].p.y).ToList();
+				if (track.SplinePosition.ChannelZ != null)
+					track.SplinePosition.ChannelZ.Values = (from z in track.SplinePosition.ChannelZ.Values select s.referencePose[boneId].p.z).ToList();
+			}
+			else
+			{
+				track.StaticPosition = s.referencePose[boneId].p;
+			}
 		}
 	}
 
 	public void DS3BoneRotSameAsReference(Skeleton s, int boneId)
 	{
-		var track = ds3_skeleton.animation[boneId];
-		track.SplineRotation = null;
-		track.HasSplineRotation = false;
-		track.HasStaticRotation = true;
-		track.Mask.RotationTypes.Clear();
-		track.Mask.RotationTypes.Add(SCA.FlagOffset.StaticX);
-		track.Mask.RotationTypes.Add(SCA.FlagOffset.StaticY);
-		track.Mask.RotationTypes.Add(SCA.FlagOffset.StaticZ);
-		track.Mask.RotationTypes.Add(SCA.FlagOffset.StaticW);
-		track.StaticRotation = DQuaternion.FromQ(ds3_skeleton.referencePose[boneId].r); //rotation from reference pose
+		for (int j = 0; j < ds3_skeleton.animation_blocks.Count; j++)
+		{
+			var track = s.animation_blocks[j][boneId];
+			track.SplineRotation = null;
+			track.HasSplineRotation = false;
+			track.HasStaticRotation = true;
+			track.Mask.RotationTypes.Clear();
+			track.Mask.RotationTypes.Add(SCA.FlagOffset.StaticX);
+			track.Mask.RotationTypes.Add(SCA.FlagOffset.StaticY);
+			track.Mask.RotationTypes.Add(SCA.FlagOffset.StaticZ);
+			track.Mask.RotationTypes.Add(SCA.FlagOffset.StaticW);
+			track.StaticRotation = DQuaternion.FromQ(ds3_skeleton.referencePose[boneId].r); //rotation from reference pose
+		}
 	}
 
 	public void DS3BoneFlipZRot(int boneId)
 	{
-		var track = ds3_skeleton.animation[boneId];
-		if(track.SplineRotation != null)
+		for (int j = 0; j < ds3_skeleton.animation_blocks.Count; j++)
 		{
-			track.SplineRotation.Channel.Values = (from q in track.SplineRotation.Channel.Values select new DQuaternion(0, 0, 1, 0) * q).ToList();
-		} else
-		{
-			track.StaticRotation = new DQuaternion(0, 0, 1, 0) * track.StaticRotation;
+			var track = ds3_skeleton.animation_blocks[j][boneId];
+			if (track.SplineRotation != null)
+			{
+				track.SplineRotation.Channel.Values = (from q in track.SplineRotation.Channel.Values select new DQuaternion(0, 0, 1, 0) * q).ToList();
+			}
+			else
+			{
+				track.StaticRotation = new DQuaternion(0, 0, 1, 0) * track.StaticRotation;
+			}
 		}
 	}
 
-	public void DS3ChangeBone(int boneId, Action<SCA.TransformTrack> act)
+	public void DS3ChangeBone(int boneId, Action<SCA.TransformTrack> act, List<int> ignoredChildren = null, int blockid = -1)
 	{
-		var track = ds3_skeleton.animation[boneId];
+
 		var bone = ds3_skeleton.bones[boneId];
 		List<int> children = new List<int>();
-		List<List<Vector3>> cpos = new List<List<Vector3>>();
-		List<List<Quaternion>> crot = new List<List<Quaternion>>();
+		List<List<List<Vector3>>> cpos = new List<List<List<Vector3>>>();
+		List<List<List<Quaternion>>> crot = new List<List<List<Quaternion>>>();
+		for (int j = 0; j < ds3_skeleton.animation_blocks.Count; j++)
+		{
+			cpos.Add(new List<List<Vector3>>());
+			crot.Add(new List<List<Quaternion>>());
+		}
 		foreach (Transform b in bone.transform)
 		{
-			children.Add(int.Parse(b.name.Split('(', ')')[1]));
-			cpos.Add(new List<Vector3>());
-			crot.Add(new List<Quaternion>());
-		}
-
-		for (int i = 0; i < ds3_skeleton.animationFrames; i++)
-		{
-			ds3_skeleton.ApplyAnimationPose(i);
-			for (int c = 0; c < children.Count; c++)
+			int id = int.Parse(b.name.Split('(', ')')[1]);
+			if (ignoredChildren != null && ignoredChildren.Contains(id)) continue;
+			children.Add(id);
+			for (int j = 0; j < ds3_skeleton.animation_blocks.Count; j++)
 			{
-				var cb = ds3_skeleton.bones[children[c]].transform;
-				cpos[c].Add(cb.position);
-				crot[c].Add(cb.rotation);
+				cpos[j].Add(new List<Vector3>());
+				crot[j].Add(new List<Quaternion>());
 			}
 		}
 
-		act(track);
+		int start_frame = blockid == -1 ? 0 : (blockid * 256);
+		int duration = blockid == -1 ? ds3_skeleton.animationFrames : Math.Min(ds3_skeleton.animationFrames - start_frame, 256);
 
-		for (int i = 0; i < ds3_skeleton.animationFrames; i++)
+		for (int i = start_frame; i < start_frame + duration; i++)
 		{
 			ds3_skeleton.ApplyAnimationPose(i);
 			for (int c = 0; c < children.Count; c++)
 			{
 				var cb = ds3_skeleton.bones[children[c]].transform;
-				cb.position = cpos[c][i];
-				cb.rotation = crot[c][i];
-				cpos[c][i] = cb.localPosition;
-				crot[c][i] = cb.localRotation;
+				cpos[i / 256][c].Add(cb.position);
+				crot[i / 256][c].Add(cb.rotation);
+			}
+		}
+
+		for (int j = 0; j < ds3_skeleton.animation_blocks.Count; j++)
+		{
+			if (blockid != -1 && j != blockid) continue;
+			var track = ds3_skeleton.animation_blocks[j][boneId];
+			act(track);
+		}
+
+		for (int i = start_frame; i < start_frame + duration; i++)
+		{
+			ds3_skeleton.ApplyAnimationPose(i);
+			for (int c = 0; c < children.Count; c++)
+			{
+				var cb = ds3_skeleton.bones[children[c]].transform;
+				cb.position = cpos[i / 256][c][i % 256];
+				cb.rotation = crot[i / 256][c][i % 256];
+				cpos[i / 256][c][i % 256] = cb.localPosition;
+				crot[i / 256][c][i % 256] = cb.localRotation;
 			}
 		}
 
 		for (int c = 0; c < children.Count; c++)
 		{
-			var ct = ds3_skeleton.animation[children[c]];
-			ct.HasSplinePosition = true;
-			ct.HasSplineRotation = true;
-			ct.Mask.PositionTypes.Clear();
-			ct.Mask.PositionTypes.Add(SCA.FlagOffset.SplineX);
-			ct.Mask.PositionTypes.Add(SCA.FlagOffset.SplineY);
-			ct.Mask.PositionTypes.Add(SCA.FlagOffset.SplineZ);
-			ct.Mask.RotationTypes.Clear();
-			ct.Mask.RotationTypes.Add(SCA.FlagOffset.SplineX);
-			ct.Mask.RotationTypes.Add(SCA.FlagOffset.SplineY);
-			ct.Mask.RotationTypes.Add(SCA.FlagOffset.SplineZ);
-			ct.Mask.RotationTypes.Add(SCA.FlagOffset.SplineW);
+			for (int j = 0; j < ds3_skeleton.animation_blocks.Count; j++)
+			{
+				if (blockid != -1 && j != blockid) continue;
+				int block_start = j * 256;
+				int block_duration = Math.Min(ds3_skeleton.animationFrames - block_start, 256);
+				var ct = ds3_skeleton.animation_blocks[j][children[c]];
+				ct.HasSplinePosition = true;
+				ct.HasSplineRotation = true;
+				ct.Mask.PositionTypes.Clear();
+				ct.Mask.PositionTypes.Add(SCA.FlagOffset.SplineX);
+				ct.Mask.PositionTypes.Add(SCA.FlagOffset.SplineY);
+				ct.Mask.PositionTypes.Add(SCA.FlagOffset.SplineZ);
+				ct.Mask.RotationTypes.Clear();
+				ct.Mask.RotationTypes.Add(SCA.FlagOffset.SplineX);
+				ct.Mask.RotationTypes.Add(SCA.FlagOffset.SplineY);
+				ct.Mask.RotationTypes.Add(SCA.FlagOffset.SplineZ);
+				ct.Mask.RotationTypes.Add(SCA.FlagOffset.SplineW);
 
-			var knotList = (from k in Enumerable.Range(-1, ds3_skeleton.animationFrames + 1) select (byte)Math.Max(k, 0)).ToList();
+				var knotList = (from k in Enumerable.Range(-1, block_duration + 1) select (byte)Math.Max(k, 0)).ToList();
 
-			var xs = (from v in cpos[c] select v.x).ToList();
-			var ys = (from v in cpos[c] select v.y).ToList();
-			var zs = (from v in cpos[c] select v.z).ToList();
-			ct.SplinePosition = new SCA.SplineTrackVector3(
-				xs,
-				ys,
-				zs,
-				knotList,
-				1
-			);
-			ct.SplinePosition.BoundsXMax = xs.Max();
-			ct.SplinePosition.BoundsXMin = xs.Min();
-			ct.SplinePosition.BoundsYMax = ys.Max();
-			ct.SplinePosition.BoundsYMin = ys.Min();
-			ct.SplinePosition.BoundsZMax = zs.Max();
-			ct.SplinePosition.BoundsZMin = zs.Min();
+				var xs = (from v in cpos[j][c] select v.x).ToList();
+				var ys = (from v in cpos[j][c] select v.y).ToList();
+				var zs = (from v in cpos[j][c] select v.z).ToList();
+				ct.SplinePosition = new SCA.SplineTrackVector3(
+					xs,
+					ys,
+					zs,
+					knotList,
+					1
+				);
+				ct.SplinePosition.BoundsXMax = xs.Max();
+				ct.SplinePosition.BoundsXMin = xs.Min();
+				ct.SplinePosition.BoundsYMax = ys.Max();
+				ct.SplinePosition.BoundsYMin = ys.Min();
+				ct.SplinePosition.BoundsZMax = zs.Max();
+				ct.SplinePosition.BoundsZMin = zs.Min();
 
-			ct.SplineRotation = new SCA.SplineTrackQuaternion(
-				(from q in crot[c] select DQuaternion.FromQ(q)).ToList(),
-				knotList,
-				1
-			);
+				ct.SplineRotation = new SCA.SplineTrackQuaternion(
+					(from q in crot[j][c] select DQuaternion.FromQ(q)).ToList(),
+					knotList,
+					1
+				);
 
 
-			//if(ct.SplinePosition != null)
-			//{
-			//	List<Vector3> ps = new List<Vector3>();
-			//	for(int i = 0; i < ct.SplinePosition.ChannelX.Values.Count; i++)
-			//	{
-			//		ps.Add(quat.ToQ() * new Vector3(
-			//			ct.SplinePosition.ChannelX.Values[i],
-			//			ct.SplinePosition.ChannelY.Values[i],
-			//			ct.SplinePosition.ChannelZ.Values[i]
-			//		));
-			//	}
-			//	ct.SplinePosition.ChannelX.Values = (from v in ps select v.x).ToList();
-			//	ct.SplinePosition.ChannelY.Values = (from v in ps select v.y).ToList();
-			//	ct.SplinePosition.ChannelZ.Values = (from v in ps select v.z).ToList();
-			//} else
-			//{
-			//	ct.StaticPosition = quat.ToQ() * ct.StaticPosition;
-			//}
+				//if(ct.SplinePosition != null)
+				//{
+				//	List<Vector3> ps = new List<Vector3>();
+				//	for(int i = 0; i < ct.SplinePosition.ChannelX.Values.Count; i++)
+				//	{
+				//		ps.Add(quat.ToQ() * new Vector3(
+				//			ct.SplinePosition.ChannelX.Values[i],
+				//			ct.SplinePosition.ChannelY.Values[i],
+				//			ct.SplinePosition.ChannelZ.Values[i]
+				//		));
+				//	}
+				//	ct.SplinePosition.ChannelX.Values = (from v in ps select v.x).ToList();
+				//	ct.SplinePosition.ChannelY.Values = (from v in ps select v.y).ToList();
+				//	ct.SplinePosition.ChannelZ.Values = (from v in ps select v.z).ToList();
+				//} else
+				//{
+				//	ct.StaticPosition = quat.ToQ() * ct.StaticPosition;
+				//}
+
+			}
 		}
-
 	}
 
 	public void DS3BoneRotQ(int boneId, DQuaternion quat)
@@ -900,13 +954,13 @@ public class Converter : MonoBehaviour
 			.First().Value.Split(new char[0], System.StringSplitOptions.RemoveEmptyEntries)
 			 select byte.Parse(v)).ToArray();
 
-		ds3_skeleton.animation = SCA.ReadSplineCompressedAnimByteBlock(false, dataVals, numTransTracks, 1)[0];
+		ds3_skeleton.animation_blocks = SCA.ReadSplineCompressedAnimByteBlock(false, dataVals, numTransTracks, 1);
 		ds3_skeleton.animationFrames = frames;
 
 		ds3_skeleton.ApplyAnimationPose(0);
 	}
 
-	public void SaveSkeletonAnimationToXML(Skeleton s, string inputFile, string fileName)
+	public void SaveSkeletonAnimationToXML(Skeleton s, string inputFile, string fileName, List<(float x, float y, float z, float w)> referenceFrame = null)
 	{
 		XElement xml;
 		if(inputFile == "")
@@ -935,11 +989,44 @@ public class Converter : MonoBehaviour
 			);
 		}
 
-		List<byte> dat = SCA.CompressAnimation(false, new List<SCA.TransformTrack[]>() { s.animation });
+		List<byte> dat = SCA.CompressAnimation(false, s.animation_blocks, out List<int> blockBounderies);
 
+		if (referenceFrame != null)
+		{
+			var els = (from item in data.Elements() where item.Attribute("class").Value == "hkaDefaultAnimatedReferenceFrame" select item);
+			if (els.Count() == 0)
+			{
+				//We should do some funky stuff to add the missing element, but I'm lazy now and I can't be bothered to do test the edge cases
+				//Most animations do have a reference frame anyway
+			}
+			else
+			{
+				XElement xDARF = els.First();
+				StringBuilder xRFval = new StringBuilder("\n");
+				for (int i = 0; i < referenceFrame.Count; i++)
+				{
+					xRFval.Append("(" + referenceFrame[i].x + " " + referenceFrame[i].y + " " + referenceFrame[i].z + " " + referenceFrame[i].w + ")\n");
+				}
+				(from item in xDARF.Elements() where item.Attribute("name").Value == "duration" select item).First().Value = (s.animationFrames * 0.033333f).ToString();
+				(from item in xDARF.Elements() where item.Attribute("name").Value == "referenceFrameSamples" select item).First().Value = xRFval.ToString();
+				(from item in xDARF.Elements() where item.Attribute("name").Value == "referenceFrameSamples" select item).First().Attribute("numelements").Value = referenceFrame.Count.ToString();
+			}
+		}
 
-
-		(from item in xSCA.Elements() where item.Attribute("name").Value == "floatBlockOffsets" select item).First().Value = dat.Count.ToString();
+		List<int> floatBlockOffsets = new List<int>();
+		for(int i = 1; i <= blockBounderies.Count; i++)
+		{
+			int cur = i != blockBounderies.Count ? blockBounderies[i] : dat.Count;
+			int prev = blockBounderies[i - 1];
+			floatBlockOffsets.Add(cur - prev);
+		}
+		(from item in xSCA.Elements() where item.Attribute("name").Value == "duration" select item).First().Value = (s.animationFrames * 0.033333f).ToString();
+		(from item in xSCA.Elements() where item.Attribute("name").Value == "numBlocks" select item).First().Value = blockBounderies.Count.ToString();
+		(from item in xSCA.Elements() where item.Attribute("name").Value == "numFrames" select item).First().Value = s.animationFrames.ToString();
+		(from item in xSCA.Elements() where item.Attribute("name").Value == "blockOffsets" select item).First().Value = string.Join(" ", blockBounderies);
+		(from item in xSCA.Elements() where item.Attribute("name").Value == "blockOffsets" select item).First().Attribute("numelements").Value = blockBounderies.Count.ToString();
+		(from item in xSCA.Elements() where item.Attribute("name").Value == "floatBlockOffsets" select item).First().Value = string.Join(" ", floatBlockOffsets);
+		(from item in xSCA.Elements() where item.Attribute("name").Value == "floatBlockOffsets" select item).First().Attribute("numelements").Value = floatBlockOffsets.Count.ToString();
 		XElement xcData = (from item in xSCA.Elements() where item.Attribute("name").Value == "data" select item).First();
 		xcData.Attribute("numelements").Value = dat.Count.ToString();
 		StringBuilder xcVal = new StringBuilder("\n");
@@ -987,9 +1074,9 @@ public class Converter : MonoBehaviour
 		}
 	}
 
-	public void SaveDS3AnimationToXML(string inputFile,string fileName)
+	public void SaveDS3AnimationToXML(string inputFile,string fileName, List<(float x, float y, float z, float w)> referenceFrame = null)
 	{
-		SaveSkeletonAnimationToXML(ds3_skeleton, inputFile, fileName);
+		SaveSkeletonAnimationToXML(ds3_skeleton, inputFile, fileName, referenceFrame);
 	}
 
 	public void SaveBBAnimationToXML(string fileName)
@@ -1030,6 +1117,14 @@ public class Converter : MonoBehaviour
 		watch.Stop();
 		Debug.Log((float)watch.ElapsedMilliseconds / 1000.0f);
 	}
+}
+
+public class StichData
+{
+	public int totalAnimations = 0;
+	public int frames = 0;
+	public List<List<(Vector3 pos, Quaternion rot, Vector3 scale)>> frameAnim = new List<List<(Vector3 pos, Quaternion rot, Vector3 scale)>>();
+	public List<(float x, float y, float z, float w)> referenceFrame = new List<(float x, float y, float z, float w)>();
 }
 
 #if UNITY_EDITOR
@@ -1671,16 +1766,11 @@ public class SCA
 			}
 		}
 
-		public DQuaternion GetValue(float frame, bool withDegree)
+		public DQuaternion GetValue(float frame)
 		{
 			int knotspan = FindKnotSpan(Degree, frame, Channel.Values.Count, Knots);
-			if(withDegree)
-			{
-				return GetSinglePoint(knotspan, Degree, frame, Knots, Channel.Values);
-			} else
-			{
-				return Channel.Values[knotspan];
-			}
+			return GetSinglePoint(knotspan, Degree, frame, Knots, Channel.Values);
+
 		}
 
 		internal SplineTrackQuaternion Clone()
@@ -1872,7 +1962,7 @@ public class SCA
 			}
 		}
 
-		public float? GetValueX(float frame, bool withDegree)
+		public float? GetValueX(float frame)
 		{
 			if (ChannelX == null)
 				return null;
@@ -1880,16 +1970,11 @@ public class SCA
 			if (ChannelX.Values.Count == 1)
 				return ChannelX.Values[0];
 			int knotspan = FindKnotSpan(Degree, frame, ChannelX.Values.Count, Knots);
-			if(withDegree)
-			{
-				return GetSinglePoint(knotspan, Degree, frame, Knots, ChannelX.Values);
-			} else
-			{
-				return ChannelX.Values[knotspan];
-			}
+			return GetSinglePoint(knotspan, Degree, frame, Knots, ChannelX.Values);
+
 		}
 
-		public float? GetValueY(float frame, bool withDegree)
+		public float? GetValueY(float frame)
 		{
 			if (ChannelY == null)
 				return null;
@@ -1897,17 +1982,10 @@ public class SCA
 			if (ChannelY.Values.Count == 1)
 				return ChannelY.Values[0];
 			int knotspan = FindKnotSpan(Degree, frame, ChannelY.Values.Count, Knots);
-			if (withDegree)
-			{
-				return GetSinglePoint(knotspan, Degree, frame, Knots, ChannelY.Values);
-			}
-			else
-			{
-				return ChannelY.Values[knotspan];
-			}
+			return GetSinglePoint(knotspan, Degree, frame, Knots, ChannelY.Values);
 		}
 
-		public float? GetValueZ(float frame, bool withDegree)
+		public float? GetValueZ(float frame)
 		{
 			if (ChannelZ == null)
 				return null;
@@ -1915,14 +1993,8 @@ public class SCA
 			if (ChannelZ.Values.Count == 1)
 				return ChannelZ.Values[0];
 			int knotspan = FindKnotSpan(Degree, frame, ChannelZ.Values.Count, Knots);
-			if (withDegree)
-			{
-				return GetSinglePoint(knotspan, Degree, frame, Knots, ChannelZ.Values);
-			}
-			else
-			{
-				return ChannelZ.Values[knotspan];
-			}
+			return GetSinglePoint(knotspan, Degree, frame, Knots, ChannelZ.Values);
+
 		}
 
 		public SplineTrackVector3 Clone()
@@ -2153,14 +2225,16 @@ public class SCA
 		return blocks;
 	}
 
-	public static List<byte> CompressAnimation(bool isBigEndian, List<TransformTrack[]> blocks)
+	public static List<byte> CompressAnimation(bool isBigEndian, List<TransformTrack[]> blocks, out List<int> blockBounderies)
 	{
 		List<byte> data = new List<byte>();
+		blockBounderies = new List<int>();
 
 		var bw = new BinaryWriterEx(isBigEndian, data);
 
 		for(int blockIndex = 0; blockIndex < blocks.Count; blockIndex++)
 		{
+			blockBounderies.Add(data.Count);
 			var TransformTracks = blocks[blockIndex];
 
 			for (int i = 0; i < TransformTracks.Length; i++)
