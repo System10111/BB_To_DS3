@@ -495,11 +495,11 @@ public class Converter : MonoBehaviour
 		DS3BoneFlipZRot(72); //L weapons are backwards
 		DS3BoneFlipZRot(102); //R weapons are backwards
 		DS3BoneFlipZRot(103); //R weapons are backwards
-		float weaponZRot = 17.0f;
-		DS3BoneRotQ(71, DQuaternion.Euler(new Vector3(3, 0, weaponZRot)));
-		DS3BoneRotQ(72, DQuaternion.Euler(new Vector3(3, 0, weaponZRot)));
-		DS3BoneRotQ(102, DQuaternion.Euler(new Vector3(3, 0, weaponZRot)));
-		DS3BoneRotQ(103, DQuaternion.Euler(new Vector3(3, 0, weaponZRot)));
+		//float weaponZRot = 17.0f;
+		//DS3BoneRotQ(71, DQuaternion.Euler(new Vector3(3, 0, weaponZRot)));
+		//DS3BoneRotQ(72, DQuaternion.Euler(new Vector3(3, 0, weaponZRot)));
+		//DS3BoneRotQ(102, DQuaternion.Euler(new Vector3(3, 0, weaponZRot)));
+		//DS3BoneRotQ(103, DQuaternion.Euler(new Vector3(3, 0, weaponZRot)));
 
 		
 		DS3BonePosSameAsReference(ds3_skeleton, 54); // There is a weird bone that on the L forearm which is a child of a different object
@@ -763,11 +763,26 @@ public class Converter : MonoBehaviour
 			var track = ds3_skeleton.animation_blocks[j][boneId];
 			if (track.SplineRotation != null)
 			{
-				track.SplineRotation.Channel.Values = (from q in track.SplineRotation.Channel.Values select new DQuaternion(0, 0, 1, 0) * q).ToList();
+				track.SplineRotation.Channel.Values = (from q in track.SplineRotation.Channel.Values select q * new DQuaternion(0, 0, 1, 0)).ToList();
 			}
 			else
 			{
-				track.StaticRotation = new DQuaternion(0, 0, 1, 0) * track.StaticRotation;
+				track.StaticRotation = track.StaticRotation * new DQuaternion(0, 0, 1, 0);
+			}
+		}
+	}
+	public void DS3BoneFlipRot(int boneId)
+	{
+		for (int j = 0; j < ds3_skeleton.animation_blocks.Count; j++)
+		{
+			var track = ds3_skeleton.animation_blocks[j][boneId];
+			if (track.SplineRotation != null)
+			{
+				track.SplineRotation.Channel.Values = (from q in track.SplineRotation.Channel.Values select q.Inverse()).ToList();
+			}
+			else
+			{
+				track.StaticRotation = track.StaticRotation.Inverse();
 			}
 		}
 	}
