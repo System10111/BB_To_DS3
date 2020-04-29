@@ -102,7 +102,6 @@ public class UIController : MonoBehaviour
     public void SaveDS3ToXML()
     {
         if (output_path == "") return;
-        if (stichData.totalAnimations > 0) 
         mainConv.SaveDS3AnimationToXML(File.ReadAllText(input_path), output_path, stichData.totalAnimations > 0 ? stichData.referenceFrame : null);
     }
 
